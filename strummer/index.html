@@ -43,49 +43,6 @@
       color: inherit;
     }
 
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 5;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 24px;
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 18px 0;
-      color: var(--white);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      border-radius: 999px;
-      background: rgba(9, 35, 34, 0.28);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav-links a {
-      padding: 8px 13px;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 0.92rem;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 999px;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      background: rgba(255, 255, 255, 0.18);
-      color: var(--white);
-      outline: none;
-    }
-
     .hero {
       position: relative;
       min-height: 92vh;
@@ -543,14 +500,6 @@
     }
 
     @media (max-width: 880px) {
-      .site-header {
-        position: absolute;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
       .hero {
         min-height: 86vh;
         background-position: 58% center;
@@ -578,7 +527,6 @@
     }
 
     @media (max-width: 560px) {
-      .site-header,
       .hero-inner,
       .page-section,
       .quote,
@@ -636,15 +584,6 @@
   </style>
 </head>
 <body>
-  <header class="site-header" aria-label="Primary navigation">
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#demo">Demo</a>
-      <a href="#why">Why</a>
-      <a href="#practice">Practice</a>
-      <a href="#session">Session</a>
-    </nav>
-  </header>
-
   <main id="top">
     <section class="hero" aria-label="Strummer introduction">
       <div class="hero-inner">
