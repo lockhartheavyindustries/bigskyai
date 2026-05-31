@@ -605,26 +605,10 @@
         <h2>A camera-guided coach for your hands.</h2>
         <p class="section-copy">Strummer is built around the moment other apps miss: what your fingers are actually doing on the guitar. The iPad camera watches your hand position, the app shows where your fingers should go, and audio feedback helps confirm what you played.</p>
       </div>
-      <div class="practice-panel" aria-label="Practice preview">
-        <div class="panel-top">
-          <p class="panel-title">Live guidance view</p>
-          <span class="tempo"><span class="tempo-dot" aria-hidden="true"></span>Camera + mic</span>
-        </div>
-        <div class="fretboard" aria-hidden="true">
-          <div class="strings">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="frets">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <span class="finger one">1</span>
-          <span class="finger two">2</span>
-          <span class="finger three">3</span>
-          <div class="hint">
-            <span>Try the shape first.</span>
-            <span class="hint-pill">No score. No rush.</span>
-          </div>
-        </div>
+      <div class="demo-frame intro-demo-frame">
+        <video class="demo-video" autoplay muted loop playsinline preload="metadata" poster="assets/strummer-demo-poster.png" aria-label="Muted preview of Strummer realtime hand tracking">
+          <source src="assets/strummer-demo.mp4" type="video/mp4">
+        </video>
       </div>
     </section>
 
@@ -639,7 +623,7 @@
         </article>
         <article class="feature-card">
           <span class="feature-icon" aria-hidden="true">2</span>
-          <h3>Ghost-hand placement guidance</h3>
+          <h3>Onscreen finger placement guidance</h3>
           <p>Visual overlays can show where each finger belongs for beginner chord shapes, making the invisible part of practice easier to copy.</p>
         </article>
         <article class="feature-card">
