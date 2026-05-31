@@ -157,12 +157,13 @@
       font-size: clamp(1.2rem, 2vw, 1.55rem);
     }
 
-    .hero-proof {
+    .proof-strip {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      max-width: 720px;
-      margin-top: 28px;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 0;
     }
 
     .proof-pill {
@@ -171,11 +172,11 @@
       justify-content: center;
       min-height: 38px;
       padding: 9px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
+      background: var(--white);
+      color: var(--teal-dark);
+      box-shadow: 0 12px 34px rgba(7, 38, 36, 0.08);
       font-size: 0.88rem;
       font-weight: 800;
     }
@@ -602,7 +603,7 @@
         font-size: clamp(3.35rem, 17.5vw, 5rem);
       }
 
-      .hero-proof,
+      .proof-strip,
       .hint,
       .panel-top {
         align-items: stretch;
@@ -649,14 +650,15 @@
       <div class="hero-inner">
         <p class="eyebrow">Learn to play guitar</p>
         <h1>Strummer</h1>
-        <p class="hero-copy">Your own personal guitar instructor, with realtime visual and audio guidance that track your actual hand position and notes played.</p>
-        <div class="hero-proof" aria-label="Strummer realtime guidance">
-          <span class="proof-pill">Camera-based hand tracking</span>
-          <span class="proof-pill">Finger placement overlays</span>
-          <span class="proof-pill">Audio note feedback</span>
-        </div>
+        <p class="hero-copy">Your personal guitar instructor, with realtime visual and audio guidance that tracks your actual hand position and notes played.</p>
       </div>
     </section>
+
+    <div class="proof-strip" aria-label="Strummer realtime guidance">
+      <span class="proof-pill">Camera-based hand tracking</span>
+      <span class="proof-pill">Finger placement overlays</span>
+      <span class="proof-pill">Audio note feedback</span>
+    </div>
 
     <section class="page-section intro-band" id="why">
       <div>
