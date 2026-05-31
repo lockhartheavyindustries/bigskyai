@@ -1,0 +1,9 @@
+strummer-demo.mp4 uses a CC0 E minor guitar-chord sample from Freesound.
+
+Title: Emin_full.wav
+Author: SpeedY
+Source: https://freesound.org/people/SpeedY/sounds/8492/
+Source file: public HQ preview converted from 8492_6479-hq.mp3
+Description: Standard open E minor chord. Down strum.
+License: Creative Commons Zero (CC0)
+Downloaded: 2026-05-31
