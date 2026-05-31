@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-31",
+  "purpose": "Realistic visual reference cutouts for Strummer beginner chord guidance.",
+  "status": "reference-assets",
+  "notes": [
+    "These images are visual pose references only. Chord correctness comes from docs/guitar-fingering-reference.md and Strummer/Models/LessonCatalog.swift.",
+    "right-handed-player assets depict a left fretting hand for a standard right-handed guitar posture.",
+    "left-handed-player assets are mirrored counterparts for a right fretting hand in a left-handed guitar posture.",
+    "Thumb, wrist, palm, and unused-finger posture should be reviewed with real camera footage before production use."
+  ],
+  "sourceOfTruth": [
+    "repo:docs/guitar-fingering-reference.md",
+    "repo:Strummer/Models/LessonCatalog.swift"
+  ],
+  "stringNumbering": {
+    "6": "low E",
+    "5": "A",
+    "4": "D",
+    "3": "G",
+    "2": "B",
+    "1": "high E"
+  },
+  "fingerNumbering": {
+    "1": "index",
+    "2": "middle",
+    "3": "ring",
+    "4": "pinky",
+    "T": "thumb"
+  },
+  "chords": [
+    {
+      "id": "em",
+      "name": "Em",
+      "fretsLowToHigh": ["0", "2", "2", "0", "0", "0"],
+      "mutedStrings": [],
+      "openStrings": [6, 3, 2, 1],
+      "fingerPlacements": [
+        { "string": 5, "fret": 2, "finger": 2 },
+        { "string": 4, "fret": 2, "finger": 3 }
+      ],
+      "assets": {
+        "rightHandedPlayer": "open-em-right-handed-player.png",
+        "leftHandedPlayer": "open-em-left-handed-player.png"
+      }
+    },
+    {
+      "id": "g",
+      "name": "G",
+      "fretsLowToHigh": ["3", "2", "0", "0", "0", "3"],
+      "mutedStrings": [],
+      "openStrings": [4, 3, 2],
+      "fingerPlacements": [
+        { "string": 6, "fret": 3, "finger": 2 },
+        { "string": 5, "fret": 2, "finger": 1 },
+        { "string": 1, "fret": 3, "finger": 3 }
+      ],
+      "assets": {
+        "rightHandedPlayer": "open-g-right-handed-player.png",
+        "leftHandedPlayer": "open-g-left-handed-player.png"
+      }
+    },
+    {
+      "id": "c",
+      "name": "C",
+      "fretsLowToHigh": ["x", "3", "2", "0", "1", "0"],
+      "mutedStrings": [6],
+      "openStrings": [3, 1],
+      "fingerPlacements": [
+        { "string": 5, "fret": 3, "finger": 3 },
+        { "string": 4, "fret": 2, "finger": 2 },
+        { "string": 2, "fret": 1, "finger": 1 }
+      ],
+      "assets": {
+        "rightHandedPlayer": "open-c-right-handed-player.png",
+        "leftHandedPlayer": "open-c-left-handed-player.png"
+      }
+    },
+    {
+      "id": "d",
+      "name": "D",
+      "fretsLowToHigh": ["x", "x", "0", "2", "3", "2"],
+      "mutedStrings": [6, 5],
+      "openStrings": [4],
+      "fingerPlacements": [
+        { "string": 3, "fret": 2, "finger": 1 },
+        { "string": 1, "fret": 2, "finger": 2 },
+        { "string": 2, "fret": 3, "finger": 3 }
+      ],
+      "assets": {
+        "rightHandedPlayer": "open-d-right-handed-player.png",
+        "leftHandedPlayer": "open-d-left-handed-player.png"
+      }
+    }
+  ]
+}
