@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Strummer is a calm iPad guitar coach for absolute beginners learning acoustic guitar.">
+  <title>Strummer | A calmer first guitar lesson</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172022;
+      --soft-ink: #415052;
+      --muted: #667477;
+      --paper: #fbf7ee;
+      --cream: #fffaf0;
+      --sage: #6f8e7b;
+      --teal: #0d6f6a;
+      --teal-dark: #074d4a;
+      --coral: #d96f49;
+      --gold: #d7ad57;
+      --line: rgba(23, 32, 34, 0.14);
+      --white: #ffffff;
+      --shadow: 0 24px 80px rgba(7, 38, 36, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 18px 0;
+      color: var(--white);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 1rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      background: rgba(9, 35, 34, 0.28);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-links a {
+      padding: 8px 13px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background-image:
+        linear-gradient(90deg, rgba(9, 24, 23, 0.82) 0%, rgba(9, 24, 23, 0.62) 38%, rgba(9, 24, 23, 0.12) 72%),
+        linear-gradient(180deg, rgba(9, 24, 23, 0.22) 0%, rgba(9, 24, 23, 0.64) 100%),
+        url("assets/strummer-hero.png");
+      background-position: center;
+      background-size: cover;
+      color: var(--white);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(251, 247, 238, 0), var(--paper));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 132px 0 116px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--gold);
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(4.2rem, 13vw, 9.6rem);
+      line-height: 0.86;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 18px;
+      border-radius: 8px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--coral);
+      color: var(--white);
+      box-shadow: 0 12px 34px rgba(217, 111, 73, 0.32);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.46);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .page-section {
+      position: relative;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 84px 0;
+    }
+
+    .intro-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 48px;
+      align-items: center;
+      padding-top: 62px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(2.3rem, 5vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      margin: 20px 0 0;
+      color: var(--soft-ink);
+      font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+    }
+
+    .practice-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #f7fbf8;
+    }
+
+    .panel-title {
+      margin: 0;
+      color: var(--teal-dark);
+      font-weight: 900;
+    }
+
+    .tempo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .tempo-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--coral);
+      box-shadow: 0 0 0 6px rgba(217, 111, 73, 0.15);
+    }
+
+    .fretboard {
+      position: relative;
+      min-height: 320px;
+      padding: 28px;
+      background:
+        linear-gradient(90deg, rgba(13, 111, 106, 0.1), transparent),
+        #26302c;
+    }
+
+    .strings {
+      position: absolute;
+      inset: 54px 28px 66px;
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+    }
+
+    .strings span {
+      display: block;
+      height: 1px;
+      background: rgba(255, 250, 240, 0.52);
+      align-self: center;
+    }
+
+    .frets {
+      position: absolute;
+      inset: 44px 48px 56px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-left: 5px solid rgba(255, 250, 240, 0.58);
+    }
+
+    .frets span {
+      border-right: 2px solid rgba(255, 250, 240, 0.24);
+    }
+
+    .finger {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #2a2416;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+    }
+
+    .finger.one {
+      left: 37%;
+      top: 36%;
+    }
+
+    .finger.two {
+      left: 51%;
+      top: 52%;
+    }
+
+    .finger.three {
+      left: 66%;
+      top: 28%;
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .hint {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 800;
+    }
+
+    .hint-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.86rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .feature-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--cream);
+    }
+
+    .feature-card:nth-child(2) {
+      background: #eef6f1;
+    }
+
+    .feature-card:nth-child(3) {
+      background: #fff3ea;
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+      background: var(--sage);
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+      background: var(--coral);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      line-height: 1.18;
+    }
+
+    .feature-card p,
+    .timeline p,
+    .quote p {
+      margin: 0;
+      color: var(--soft-ink);
+    }
+
+    .lesson-flow {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 42px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .time {
+      color: var(--teal-dark);
+      font-weight: 900;
+      font-size: 0.95rem;
+    }
+
+    .timeline h3 {
+      margin-bottom: 5px;
+      font-size: 1.08rem;
+    }
+
+    .quote-band {
+      border-top: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(13, 111, 106, 0.1), rgba(217, 111, 73, 0.1)),
+        var(--paper);
+    }
+
+    .quote {
+      width: min(960px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .quote h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 34px;
+      border-radius: 8px;
+      background: var(--teal-dark);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3.8rem);
+    }
+
+    .cta p {
+      max-width: 650px;
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.08rem;
+    }
+
+    .cta .button {
+      background: var(--gold);
+      color: #211a0a;
+      white-space: nowrap;
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 24px 0 46px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 880px) {
+      .site-header {
+        position: absolute;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 86vh;
+        background-position: 58% center;
+      }
+
+      .hero-inner {
+        padding-bottom: 88px;
+      }
+
+      .intro-band,
+      .lesson-flow,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 28px 22px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-header,
+      .hero-inner,
+      .page-section,
+      .quote,
+      footer {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero {
+        min-height: 88vh;
+        background-image:
+          linear-gradient(90deg, rgba(9, 24, 23, 0.86) 0%, rgba(9, 24, 23, 0.66) 68%, rgba(9, 24, 23, 0.24) 100%),
+          linear-gradient(180deg, rgba(9, 24, 23, 0.18) 0%, rgba(9, 24, 23, 0.72) 100%),
+          url("assets/strummer-hero.png");
+      }
+
+      .hero-inner {
+        padding-top: 110px;
+      }
+
+      h1 {
+        font-size: clamp(4rem, 21vw, 6.4rem);
+      }
+
+      .hero-actions,
+      .hint,
+      .panel-top {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .page-section {
+        padding: 62px 0;
+      }
+
+      .fretboard {
+        min-height: 260px;
+        padding: 22px;
+      }
+
+      .finger {
+        width: 40px;
+        height: 40px;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Primary navigation">
+    <a class="brand" href="#top" aria-label="Strummer home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>Strummer</span>
+    </a>
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#why">Why</a>
+      <a href="#practice">Practice</a>
+      <a href="#session">Session</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Strummer introduction">
+      <div class="hero-inner">
+        <p class="eyebrow">Beginner acoustic guitar on iPad</p>
+        <h1>Strummer</h1>
+        <p class="hero-copy">A patient guitar coach for the first ten minutes: where to put your fingers, when to strum, and when to slow down.</p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="#session">Preview the first session</a>
+          <a class="button secondary" href="#practice">See the practice flow</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section intro-band" id="why">
+      <div>
+        <p class="section-kicker">Built for day one</p>
+        <h2>Guitar practice without the panic.</h2>
+        <p class="section-copy">Most beginners do not need a wall of songs or a score that makes them feel behind. Strummer starts smaller: one acoustic guitar, one iPad, one friendly practice session that helps a new player form chords and strum in time.</p>
+      </div>
+      <div class="practice-panel" aria-label="Practice preview">
+        <div class="panel-top">
+          <p class="panel-title">Today's gentle start</p>
+          <span class="tempo"><span class="tempo-dot" aria-hidden="true"></span>Slow tempo</span>
+        </div>
+        <div class="fretboard" aria-hidden="true">
+          <div class="strings">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="frets">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="finger one">1</span>
+          <span class="finger two">2</span>
+          <span class="finger three">3</span>
+          <div class="hint">
+            <span>Try the shape first.</span>
+            <span class="hint-pill">No score. No rush.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="practice">
+      <p class="section-kicker">What it teaches</p>
+      <h2>A simple loop beginners can actually finish.</h2>
+      <div class="cards-grid">
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">1</span>
+          <h3>Finger placement that feels visible</h3>
+          <p>Strummer uses the iPad camera view and clear overlays to help a learner see the chord shape before trying to play it.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">2</span>
+          <h3>Feedback that does not overclaim</h3>
+          <p>Instead of brittle scores, the app keeps feedback broad and useful: sounds right, not quite, late, or try slower.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon" aria-hidden="true">3</span>
+          <h3>Short sessions with a real ending</h3>
+          <p>The first path is built around Em, G, C, and D, with practice that wraps up before the beginner burns out.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section lesson-flow" id="session">
+      <div>
+        <p class="section-kicker">First session</p>
+        <h2>Ten minutes, start to recap.</h2>
+        <p class="section-copy">The app is designed to guide a beginner through a complete seated practice moment: setup, tuning check, chord shape, slow strum, two-chord change, and a small recap.</p>
+      </div>
+      <div class="timeline" aria-label="Example first Strummer session">
+        <article class="timeline-row">
+          <span class="time">00:00</span>
+          <div>
+            <h3>Set up the guitar view</h3>
+            <p>Place the iPad, confirm acoustic guitar, and align the fretboard guides.</p>
+          </div>
+        </article>
+        <article class="timeline-row">
+          <span class="time">02:00</span>
+          <div>
+            <h3>Learn one shape</h3>
+            <p>Start with a calm chord placement prompt before any timing pressure appears.</p>
+          </div>
+        </article>
+        <article class="timeline-row">
+          <span class="time">05:00</span>
+          <div>
+            <h3>Strum with a slow pulse</h3>
+            <p>Use the metronome to build rhythm at a pace that still feels human.</p>
+          </div>
+        </article>
+        <article class="timeline-row">
+          <span class="time">09:00</span>
+          <div>
+            <h3>End with next steps</h3>
+            <p>Finish with what improved and one gentle suggestion for the next practice.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band" aria-label="Product promise">
+      <div class="quote">
+        <p class="section-kicker">The promise</p>
+        <h2>Less like a test. More like someone sitting beside you.</h2>
+        <p class="section-copy">Strummer keeps the early guitar experience forgiving, local-first, and focused on the small physical wins that make a beginner want to come back tomorrow.</p>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="cta">
+        <div>
+          <h2>Make the first lesson feel possible.</h2>
+          <p>Strummer is in early planning and prototype work. The MVP is designed for iPad, acoustic guitar, and absolute beginners.</p>
+        </div>
+        <a class="button" href="#top">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Strummer is a draft product concept from Big Sky AI. Final name, availability, and app features may change.</span>
+  </footer>
+</body>
+</html>
