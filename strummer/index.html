@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Strummer is a calm iPad guitar coach for absolute beginners learning acoustic guitar.">
-  <title>Strummer | A calmer first guitar lesson</title>
+  <meta name="description" content="Strummer helps beginners learn guitar with realtime visual and audio guidance for hand position, finger placement, and notes played.">
+  <title>Strummer | Learn guitar with visual and audio guidance</title>
   <style>
     :root {
       color-scheme: light;
@@ -63,6 +63,12 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      min-height: 44px;
+      padding: 5px 12px 5px 5px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      background: rgba(9, 35, 34, 0.28);
+      backdrop-filter: blur(14px);
       font-weight: 800;
       font-size: 1.05rem;
       text-decoration: none;
@@ -238,6 +244,30 @@
       gap: 48px;
       align-items: center;
       padding-top: 62px;
+    }
+
+    .demo-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1.18fr);
+      gap: 40px;
+      align-items: center;
+      padding-top: 76px;
+    }
+
+    .demo-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .demo-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: var(--ink);
     }
 
     .section-kicker {
@@ -558,6 +588,7 @@
       }
 
       .intro-band,
+      .demo-section,
       .lesson-flow,
       .cta {
         grid-template-columns: 1fr;
@@ -637,6 +668,7 @@
       <span>Strummer</span>
     </a>
     <nav class="nav-links" aria-label="Page sections">
+      <a href="#demo">Demo</a>
       <a href="#why">Why</a>
       <a href="#practice">Practice</a>
       <a href="#session">Session</a>
@@ -654,6 +686,19 @@
           <span class="proof-pill">Finger placement overlays</span>
           <span class="proof-pill">Audio note feedback</span>
         </div>
+      </div>
+    </section>
+
+    <section class="page-section demo-section" id="demo">
+      <div>
+        <p class="section-kicker">Concept demo</p>
+        <h2>See the tracking loop in motion.</h2>
+        <p class="section-copy">A short motion mock shows the iPad mirroring finger placement while audio confirms the beginner chord notes as they ring out.</p>
+      </div>
+      <div class="demo-frame">
+        <video class="demo-video" controls playsinline preload="metadata" poster="assets/strummer-hero-v4.png" aria-label="Strummer concept demo video">
+          <source src="assets/strummer-demo.mp4" type="video/mp4">
+        </video>
       </div>
     </section>
 
