@@ -50,40 +50,13 @@
       right: 0;
       z-index: 5;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       gap: 24px;
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
       padding: 18px 0;
       color: var(--white);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 44px;
-      padding: 5px 12px 5px 5px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      border-radius: 999px;
-      background: rgba(9, 35, 34, 0.28);
-      backdrop-filter: blur(14px);
-      font-weight: 800;
-      font-size: 1.05rem;
-      text-decoration: none;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.18);
-      font-size: 1rem;
-      backdrop-filter: blur(12px);
     }
 
     .nav-links {
@@ -663,10 +636,6 @@
 </head>
 <body>
   <header class="site-header" aria-label="Primary navigation">
-    <a class="brand" href="#top" aria-label="Strummer home">
-      <span class="brand-mark" aria-hidden="true">S</span>
-      <span>Strummer</span>
-    </a>
     <nav class="nav-links" aria-label="Page sections">
       <a href="#demo">Demo</a>
       <a href="#why">Why</a>
