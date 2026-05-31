@@ -178,11 +178,27 @@
       font-size: clamp(1.2rem, 2vw, 1.55rem);
     }
 
-    .hero-actions {
+    .hero-proof {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
+      gap: 10px;
+      max-width: 720px;
+      margin-top: 28px;
+    }
+
+    .proof-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      font-size: 0.88rem;
+      font-weight: 800;
     }
 
     .button {
@@ -579,10 +595,10 @@
       }
 
       h1 {
-        font-size: clamp(4rem, 21vw, 6.4rem);
+        font-size: clamp(3.35rem, 17.5vw, 5rem);
       }
 
-      .hero-actions,
+      .hero-proof,
       .hint,
       .panel-top {
         align-items: stretch;
@@ -633,19 +649,24 @@
         <p class="eyebrow">Learn to play guitar</p>
         <h1>Strummer</h1>
         <p class="hero-copy">Your own personal guitar instructor, with realtime visual and audio guidance that track your actual hand position and notes played.</p>
+        <div class="hero-proof" aria-label="Strummer realtime guidance">
+          <span class="proof-pill">Camera-based hand tracking</span>
+          <span class="proof-pill">Finger placement overlays</span>
+          <span class="proof-pill">Audio note feedback</span>
+        </div>
       </div>
     </section>
 
     <section class="page-section intro-band" id="why">
       <div>
-        <p class="section-kicker">Built for day one</p>
-        <h2>Guitar practice without the panic.</h2>
-        <p class="section-copy">Most beginners do not need a wall of songs or a score that makes them feel behind. Strummer starts smaller: one acoustic guitar, one iPad, one friendly practice session that helps a new player form chords and strum in time.</p>
+        <p class="section-kicker">The difference</p>
+        <h2>A camera-guided coach for your hands.</h2>
+        <p class="section-copy">Strummer is built around the moment other apps miss: what your fingers are actually doing on the guitar. The iPad camera watches your hand position, the app shows where your fingers should go, and audio feedback helps confirm what you played.</p>
       </div>
       <div class="practice-panel" aria-label="Practice preview">
         <div class="panel-top">
-          <p class="panel-title">Today's gentle start</p>
-          <span class="tempo"><span class="tempo-dot" aria-hidden="true"></span>Slow tempo</span>
+          <p class="panel-title">Live guidance view</p>
+          <span class="tempo"><span class="tempo-dot" aria-hidden="true"></span>Camera + mic</span>
         </div>
         <div class="fretboard" aria-hidden="true">
           <div class="strings">
@@ -667,22 +688,22 @@
 
     <section class="page-section" id="practice">
       <p class="section-kicker">What it teaches</p>
-      <h2>A simple loop beginners can actually finish.</h2>
+      <h2>Realtime feedback before bad habits set in.</h2>
       <div class="cards-grid">
         <article class="feature-card">
           <span class="feature-icon" aria-hidden="true">1</span>
-          <h3>Finger placement that feels visible</h3>
-          <p>Strummer uses the iPad camera view and clear overlays to help a learner see the chord shape before trying to play it.</p>
+          <h3>Hand tracking on the actual guitar</h3>
+          <p>The core experience is a live camera view of the learner's fretting hand, aligned to the guitar so guidance happens where practice happens.</p>
         </article>
         <article class="feature-card">
           <span class="feature-icon" aria-hidden="true">2</span>
-          <h3>Feedback that does not overclaim</h3>
-          <p>Instead of brittle scores, the app keeps feedback broad and useful: sounds right, not quite, late, or try slower.</p>
+          <h3>Ghost-hand placement guidance</h3>
+          <p>Visual overlays can show where each finger belongs for beginner chord shapes, making the invisible part of practice easier to copy.</p>
         </article>
         <article class="feature-card">
           <span class="feature-icon" aria-hidden="true">3</span>
-          <h3>Short sessions with a real ending</h3>
-          <p>The first path is built around Em, G, C, and D, with practice that wraps up before the beginner burns out.</p>
+          <h3>Audio feedback for notes and timing</h3>
+          <p>The microphone listens alongside the camera, helping the app respond to notes played, strums, rhythm, and slow beginner chord changes.</p>
         </article>
       </div>
     </section>
@@ -728,8 +749,8 @@
     <section class="quote-band" aria-label="Product promise">
       <div class="quote">
         <p class="section-kicker">The promise</p>
-        <h2>Less like a test. More like someone sitting beside you.</h2>
-        <p class="section-copy">Strummer keeps the early guitar experience forgiving, local-first, and focused on the small physical wins that make a beginner want to come back tomorrow.</p>
+        <h2>Not just listening. Watching, guiding, and correcting.</h2>
+        <p class="section-copy">Strummer's advantage is the combination of realtime camera guidance and audio feedback, tuned for beginners who need to see what to do with their hands.</p>
       </div>
     </section>
 
