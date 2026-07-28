@@ -52,6 +52,18 @@
       "rights": "Rights status not documented in this repository."
     },
     {
+      "id": "ralph-imessage-weather-chat",
+      "kind": "image",
+      "file": "images/ralph-imessage-weather-chat.jpg",
+      "media_type": "image/jpeg",
+      "width": 921,
+      "height": 1742,
+      "sha256": "aefa6dd1d6506b7cc736833c22c03687658480ace21a52f4a2950a87bb79d6cd",
+      "alt": "iMessage conversation in which Ralph answers a question about today's weather in Big Sky, Montana",
+      "provenance": "Screenshot provided by the project owner on 2026-07-28; status bar and message composer cropped.",
+      "rights": "Rights status not documented in this repository."
+    },
+    {
       "id": "ralph-waving-pink",
       "kind": "image",
       "file": "images/ralph-waving-pink.png",

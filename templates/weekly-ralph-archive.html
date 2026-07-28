@@ -19,14 +19,17 @@
 <body class="archive-page">
   <header class="site-header">
     <a class="brand" href="../">BIG SKY AI</a>
-    <a class="rss-link" href="feed.xml">RSS</a>
+    <a class="rss-link" href="../ralph/">&larr; Meet Ralph</a>
   </header>
 
   <main>
     <section class="archive-hero">
       <p class="eyebrow">A Big Sky AI publication</p>
       <h1>The Weekly Ralph</h1>
-      <p>Unexpected, practical ways real people put an AI assistant to work. No giant group text required.</p>
+      <div class="archive-lede">
+        <img class="archive-mark" src="../ralph/assets/images/ralph-excited-green-closeup.png" alt="Close-up of an excited Ralph Wiggum against a green background" width="400" height="400" loading="lazy">
+        <p>A collection of real-world ways people put Ralph to work.</p>
+      </div>
     </section>
 
     <section class="archive-list" aria-label="Issues">
@@ -43,18 +46,17 @@
       {% endfor %}
     </section>
 
-    <section class="archive-about">
-      <p class="eyebrow">What belongs here</p>
-      <h2>Real problems. Specific requests. Useful outcomes.</h2>
-      <p>Every issue draws from an anonymized set of real interactions across a small community. The point is not to marvel at AI. It is to notice a new way it might help.</p>
-    </section>
   </main>
 
   <footer>
-    <div>
-      <a class="footer-brand" href="../">BIG SKY AI</a>
-      <p>Useful AI, made visible.</p>
-    </div>
+    <a class="footer-brand" href="../">BIG SKY AI</a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="../ralph/">Meet Ralph</a>
+      <a href="../ralph/how-it-works/">How Ralph works</a>
+      <a href="./">The Weekly Ralph</a>
+      <a href="feed.xml">RSS</a>
+    </nav>
+    <span>Useful AI, made visible.</span>
   </footer>
 
   <script data-goatcounter="https://bigskyai.goatcounter.com/count"

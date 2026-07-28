@@ -15,6 +15,7 @@ assets. The files listed below are the reusable project collection.
 | ![Ralph Wiggum thinking in a blue sweater](images/ralph-thinking-blue-sweater.png) | [`ralph-thinking-blue-sweater.png`](images/ralph-thinking-blue-sweater.png) | PNG | 415 × 423 |
 | ![Full-body Ralph Wiggum thinking with a finger to his nose](images/ralph-thinking-full-body.png) | [`ralph-thinking-full-body.png`](images/ralph-thinking-full-body.png) | PNG | 350 × 572 |
 | ![Ralph Wiggum waving against a pink background](images/ralph-waving-pink.png) | [`ralph-waving-pink.png`](images/ralph-waving-pink.png) | PNG | 576 × 432 |
+| ![iMessage conversation in which Ralph answers a question about today's weather in Big Sky, Montana](images/ralph-imessage-weather-chat.jpg) | [`ralph-imessage-weather-chat.jpg`](images/ralph-imessage-weather-chat.jpg) | JPEG | 921 × 1742 |
 
 ## Collection conventions
 

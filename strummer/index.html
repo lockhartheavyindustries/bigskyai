@@ -491,12 +491,53 @@
       white-space: nowrap;
     }
 
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: min(1180px, calc(100% - 40px));
+      min-height: 72px;
+      transform: translateX(-50%);
+      color: var(--cream);
+    }
+
+    .site-header .brand {
+      color: var(--cream);
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    .site-note {
+      color: rgba(255, 250, 240, 0.78);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
     footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px 28px;
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
       padding: 24px 0 46px;
       color: var(--muted);
       font-size: 0.92rem;
+    }
+
+    .footer-brand {
+      color: var(--ink);
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      text-decoration: none;
     }
 
     @media (max-width: 880px) {
@@ -584,6 +625,11 @@
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="../">BIG SKY AI</a>
+    <span class="site-note">A Big Sky AI concept</span>
+  </header>
+
   <main id="top">
     <section class="hero" aria-label="Strummer introduction">
       <div class="hero-inner">
@@ -705,6 +751,7 @@
   </main>
 
   <footer>
+    <a class="footer-brand" href="../">BIG SKY AI</a>
     <span>Strummer is a draft product concept from Big Sky AI. Final name, availability, and app features may change.</span>
   </footer>
 
