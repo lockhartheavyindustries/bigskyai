@@ -1,7 +1,6 @@
 issue = 1
 slug = "001"
 published = "2026-07-27"
-display_date = "July 2026"
 title = "AI gets interesting when the question gets specific"
 description = "Five surprisingly useful ways a small community put Ralph to work: visualizing a television, transforming a pet photo, tuning a pool pump, preparing for an exam, and shopping for an HVAC scent system."
 dek = "Five real requests. No futuristic demos. Just people bringing oddly specific problems to an AI assistant—and getting something useful back."
@@ -60,7 +59,7 @@ category = "Learning and coaching"
 title = "A forgotten exam plan turned into a live readiness check"
 lede = "Instead of handing over a study guide, Ralph tested what the learner already knew."
 body = """
-A user preparing for the ASQ Certified Quality Auditor exam realized that the planned readiness work had slipped. Ralph picked up the prior context—the exam date and major knowledge areas—and immediately proposed a short diagnostic.
+A user preparing for an official certification exam for their job realized that the planned readiness work had slipped. Ralph picked up the prior context—the exam date and major knowledge areas—and immediately proposed a short diagnostic.
 
 The learner answered ten mixed questions and scored nine out of ten. Ralph explained the miss, then moved into harder scenario questions where several answers sounded plausible. The next result exposed a more useful weakness: distinguishing observations, minor nonconformities, and major system failures.
 
