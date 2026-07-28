@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>The Weekly Ralph</title>
+    <link>https://lockhartheavyindustries.github.io/bigskyai/weekly-ralph/</link>
+    <description>Unexpected, practical ways real people put an AI assistant to work.</description>
+    <language>en-us</language>
+    <item>
+      <title>The Weekly Ralph · Issue 001: AI gets interesting when the question gets specific</title>
+      <link>https://lockhartheavyindustries.github.io/bigskyai/weekly-ralph/issues/001/</link>
+      <guid isPermaLink="true">https://lockhartheavyindustries.github.io/bigskyai/weekly-ralph/issues/001/</guid>
+      <pubDate>Mon, 27 Jul 2026 12:00:00 +0000</pubDate>
+      <description>Five surprisingly useful ways a small community put Ralph to work: visualizing a television, transforming a pet photo, tuning a pool pump, preparing for an exam, and shopping for an HVAC scent system.</description>
+    </item>
+  </channel>
+</rss>

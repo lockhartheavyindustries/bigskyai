@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ issue.description }}">
+  <meta name="theme-color" content="#074d4a">
+  <meta property="og:title" content="The Weekly Ralph · Issue {{ "%03d"|format(issue.issue) }}">
+  <meta property="og:description" content="{{ issue.title }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ issue.url }}">
+  {% if issue.og_image %}<meta property="og:image" content="{{ issue.og_image }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Weekly Ralph · Issue {{ "%03d"|format(issue.issue) }}">
+  <meta name="twitter:description" content="{{ issue.title }}">
+  {% if issue.og_image %}<meta name="twitter:image" content="{{ issue.og_image }}">{% endif %}
+  <link rel="canonical" href="{{ issue.url }}">
+  <link rel="alternate" type="application/rss+xml" title="The Weekly Ralph" href="../../feed.xml">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <title>The Weekly Ralph · Issue {{ "%03d"|format(issue.issue) }}</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../">THE WEEKLY RALPH</a>
+    <span class="issue-chip">ISSUE {{ "%03d"|format(issue.issue) }}</span>
+  </header>
+
+  <main>
+    <article>
+      <header class="issue-hero">
+        <div class="hero-meta">
+          <p class="eyebrow">Five ways people used AI this month</p>
+          <time datetime="{{ issue.published }}">{{ issue.display_date }}</time>
+        </div>
+        <h1>{{ issue.title }}</h1>
+        <p class="dek">{{ issue.dek }}</p>
+        <div class="hero-mark" aria-hidden="true">WR</div>
+      </header>
+
+      <aside class="editor-note">
+        <strong>About these stories</strong>
+        <p>{{ issue.editor_note }}</p>
+      </aside>
+
+      <div class="story-list">
+        {% for story in issue.stories %}
+        <section class="story" id="story-{{ story.number }}">
+          <div class="story-rail" aria-hidden="true">
+            <span>{{ story.number }}</span>
+          </div>
+          <div class="story-content">
+            <p class="story-category">{{ story.category }}</p>
+            <h2>{{ story.title }}</h2>
+            <p class="story-lede">{{ story.lede }}</p>
+            <div class="story-body">{{ story.body|markdown }}</div>
+
+            <div class="takeaway">
+              <p class="takeaway-label">Why this worked</p>
+              <p>{{ story.takeaway }}</p>
+            </div>
+
+            <div class="try-it">
+              <p class="try-label">Try asking your AI</p>
+              <blockquote>{{ story.prompt }}</blockquote>
+            </div>
+
+            {% if story.caveat %}
+            <p class="caveat">{{ story.caveat }}</p>
+            {% endif %}
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+    </article>
+
+    <section class="closing">
+      <p class="eyebrow">The pattern</p>
+      <h2>Specific beats impressive.</h2>
+      <p>The most useful requests in this issue were not grand. They included dimensions, model numbers, deadlines, photos, constraints, and feedback. Give an AI the shape of the real problem and it has a much better chance of returning something that belongs in real life.</p>
+      <a class="button" href="../../">Browse every issue →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <a class="footer-brand" href="../../../">BIG SKY AI</a>
+      <p>Useful AI, made visible.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="../../">Issue archive</a>
+      <a href="../../feed.xml">RSS</a>
+    </nav>
+  </footer>
+</body>
+</html>

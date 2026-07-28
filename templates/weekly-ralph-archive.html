@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Weekly Ralph showcases unexpected, practical ways real people put an AI assistant to work.">
+  <meta name="theme-color" content="#074d4a">
+  <meta property="og:title" content="The Weekly Ralph">
+  <meta property="og:description" content="Unexpected, practical ways real people put an AI assistant to work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site_url }}/weekly-ralph/">
+  {% if issues and issues[0].og_image %}<meta property="og:image" content="{{ issues[0].og_image }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{ site_url }}/weekly-ralph/">
+  <link rel="alternate" type="application/rss+xml" title="The Weekly Ralph" href="feed.xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <title>The Weekly Ralph</title>
+</head>
+<body class="archive-page">
+  <header class="site-header">
+    <a class="brand" href="../">BIG SKY AI</a>
+    <a class="rss-link" href="feed.xml">RSS</a>
+  </header>
+
+  <main>
+    <section class="archive-hero">
+      <p class="eyebrow">A Big Sky AI publication</p>
+      <h1>The Weekly Ralph</h1>
+      <p>Unexpected, practical ways real people put an AI assistant to work. No giant group text required.</p>
+    </section>
+
+    <section class="archive-list" aria-label="Issues">
+      {% for issue in issues %}
+      <a class="issue-card" href="issues/{{ issue.slug }}/">
+        <div class="issue-card-meta">
+          <span>Issue {{ "%03d"|format(issue.issue) }}</span>
+          <time datetime="{{ issue.published }}">{{ issue.display_date }}</time>
+        </div>
+        <h2>{{ issue.title }}</h2>
+        <p>{{ issue.dek }}</p>
+        <span class="read-link">Read the issue →</span>
+      </a>
+      {% endfor %}
+    </section>
+
+    <section class="archive-about">
+      <p class="eyebrow">What belongs here</p>
+      <h2>Real problems. Specific requests. Useful outcomes.</h2>
+      <p>Every issue draws from an anonymized set of real interactions across a small community. The point is not to marvel at AI. It is to notice a new way it might help.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <a class="footer-brand" href="../">BIG SKY AI</a>
+      <p>Useful AI, made visible.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="../privacy-policy.html">Privacy</a>
+      <a href="../terms-and-conditions.html">Terms</a>
+    </nav>
+  </footer>
+</body>
+</html>
