@@ -178,8 +178,7 @@ h1 {
 }
 
 .story h2,
-.closing h2,
-.archive-about h2 {
+.closing h2 {
   max-width: 800px;
   margin: 0;
   font-size: clamp(2.5rem, 5.8vw, 5rem);
@@ -382,23 +381,6 @@ footer nav {
   font-weight: 900;
 }
 
-.archive-about {
-  margin: 24px 0 96px;
-  padding: 58px;
-  border-radius: 18px;
-  background: var(--cream);
-  box-shadow: var(--shadow);
-}
-
-.archive-about h2 { margin-top: 14px; }
-
-.archive-about > p:last-child {
-  max-width: 720px;
-  margin: 24px 0 0;
-  color: var(--soft-ink);
-  font-size: 1.08rem;
-}
-
 @media (max-width: 760px) {
   .issue-hero { min-height: 560px; }
 
@@ -419,8 +401,7 @@ footer nav {
     gap: 8px;
   }
 
-  .closing,
-  .archive-about {
+  .closing {
     padding: 38px 28px;
   }
 }
@@ -446,8 +427,7 @@ footer nav {
   h1 { font-size: clamp(3.35rem, 17vw, 5rem); }
 
   .story h2,
-  .closing h2,
-  .archive-about h2 {
+  .closing h2 {
     font-size: clamp(2.35rem, 12vw, 3.8rem);
   }
 
