@@ -13,7 +13,9 @@ numbers, real names, and unapproved media belong in the private OpenClaw
 workspace—not here.
 
 Create a new issue by copying the previous TOML file, incrementing `issue` and
-`slug`, and replacing the editorial content. Then run:
+`slug`, setting `published` to the date the issue is generated (preferably a
+Monday), and replacing the editorial content. The public date is formatted
+automatically from `published`. Then run:
 
 ```sh
 just check

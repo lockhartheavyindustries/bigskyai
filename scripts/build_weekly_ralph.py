@@ -36,6 +36,10 @@ def load_issues() -> list[dict]:
     for path in sorted(CONTENT_DIR.glob("*.toml")):
         with path.open("rb") as handle:
             issue = tomllib.load(handle)
+        published = date.fromisoformat(issue["published"])
+        issue["display_date"] = (
+            f"{published:%B} {published.day}, {published.year}"
+        )
         issue["url"] = f"{SITE_URL}/weekly-ralph/issues/{issue['slug']}/"
         issues.append(issue)
     return sorted(issues, key=lambda item: item["issue"], reverse=True)
