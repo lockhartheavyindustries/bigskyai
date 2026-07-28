@@ -22,6 +22,21 @@ That critique mattered. Ralph identified exactly what a second pass should prote
 takeaway = "Good creative work is iterative. A useful assistant should preserve what matters, accept concrete criticism, and turn it into a better next instruction."
 prompt = "Edit this photo realistically. Preserve the subject’s face, proportions, pose, lighting, and identity. Change only [specific feature], then tell me what may have drifted."
 
+[[stories.media]]
+src = "../../assets/story-media/001/dog-original.jpeg"
+alt = "Original photo of the dog before the creative grooming edit"
+caption = "Original photo"
+
+[[stories.media]]
+src = "../../assets/story-media/001/dog-deer-edit.jpg"
+alt = "The same dog edited with a realistic deer-inspired coat pattern"
+caption = "Deer-inspired edit"
+
+[[stories.media]]
+src = "../../assets/story-media/001/dog-deer-final.png"
+alt = "Final deer-inspired edit preserving the dog’s original muzzle and cheek width"
+caption = "Final version"
+
 [[stories]]
 number = "02"
 category = "Home equipment"
