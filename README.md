@@ -37,6 +37,19 @@ Reusable public media lives in [`ralph/assets/`](ralph/assets/). Add collection
 images under `ralph/assets/images/` and record their metadata in
 `ralph/assets/manifest.json`.
 
+## Analytics
+
+Public HTML pages include the GoatCounter beacon for
+`bigskyai.goatcounter.com`. Generated Ralph and Weekly Ralph pages inherit it
+from their templates, and `just check` verifies that every public page contains
+exactly one beacon.
+
+Use campaign parameters when distributing an issue, for example:
+
+```text
+?utm_campaign=weekly-ralph-001&utm_source=imessage
+```
+
 ## Public URLs that must remain stable
 
 - `/weekly-ralph/`

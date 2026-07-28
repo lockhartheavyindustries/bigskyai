@@ -9,6 +9,10 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_DIRS = (ROOT / "ralph", ROOT / "weekly-ralph")
+STATIC_PAGES = (ROOT / "index.html", ROOT / "strummer" / "index.html")
+GOATCOUNTER_MARKER = (
+    'data-goatcounter="https://bigskyai.goatcounter.com/count"'
+)
 DENYLIST = (
     "Mellissa",
     "Colleen",
@@ -61,6 +65,15 @@ def main() -> None:
     if not html_files:
         raise SystemExit("No generated Ralph HTML found.")
 
+    tracked_pages = [*STATIC_PAGES, *html_files]
+    for path in tracked_pages:
+        text = path.read_text(encoding="utf-8")
+        if text.count(GOATCOUNTER_MARKER) != 1:
+            errors.append(
+                f"{path.relative_to(ROOT)} must contain exactly one "
+                "GoatCounter beacon"
+            )
+
     for path in html_files:
         text = path.read_text(encoding="utf-8")
         for private_value in DENYLIST:
@@ -91,7 +104,10 @@ def main() -> None:
 
     if errors:
         raise SystemExit("\n".join(errors))
-    print(f"Checked {len(html_files)} Ralph and Weekly Ralph HTML pages.")
+    print(
+        f"Checked {len(html_files)} Ralph and Weekly Ralph HTML pages "
+        f"and analytics coverage on {len(tracked_pages)} public pages."
+    )
 
 
 if __name__ == "__main__":
