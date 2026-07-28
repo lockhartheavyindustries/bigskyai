@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A running list of what's new with Ralph: features, improvements, and milestones as they land.">
+  <meta name="theme-color" content="#063f3d">
+  <meta property="og:title" content="What's new with Ralph · Big Sky AI">
+  <meta property="og:description" content="Ralph keeps getting better. Here's the running list of new features and changes as they land.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site_url }}/ralph/whats-new/">
+  <meta property="og:image" content="{{ site_url }}/ralph/assets/ralph-og-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{ site_url }}/ralph/whats-new/">
+  <link rel="stylesheet" href="../assets/ralph.css">
+  <title>What's new with Ralph · Big Sky AI</title>
+</head>
+<body class="subpage">
+  <header class="site-header">
+    <a class="brand" href="../../">BIG SKY AI</a>
+    <a class="publication-link" href="../">&larr; Meet Ralph</a>
+  </header>
+
+  <main>
+    <section class="subpage-hero">
+      <div class="subpage-hero-copy">
+        <p class="eyebrow">A running list</p>
+        <h1>What's new</h1>
+        <p class="hero-lede">Ralph keeps getting better&mdash;new skills, new tools, new ways to help. Changes land here as they happen, newest first.</p>
+      </div>
+      <figure class="subpage-hero-figure">
+        <img src="../assets/images/ralph-waving-pink.png" alt="Ralph Wiggum waving against a pink background" width="576" height="432" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="changelog-section">
+      <ol class="changelog">
+        {% for entry in whats_new %}
+        <li>
+          <time datetime="{{ entry.date }}">{{ entry.display_date }}</time>
+          <div class="changelog-body">
+            <h3>{{ entry.title }}</h3>
+            {{ entry.body | markdown }}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+
+    <section class="subpage-cta">
+      <a class="tour-link" href="../">&larr; Back to Ralph</a>
+      <a class="tour-link" href="../how-it-works/">How Ralph works &rarr;</a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="../../">BIG SKY AI</a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="../">Meet Ralph</a>
+      <a href="../how-it-works/">How Ralph works</a>
+      <a href="./">What's new</a>
+      <a href="../../weekly-ralph/">The Weekly Ralph</a>
+    </nav>
+    <span>Useful AI, made visible.</span>
+  </footer>
+
+  <script data-goatcounter="https://bigskyai.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

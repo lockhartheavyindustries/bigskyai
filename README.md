@@ -27,6 +27,10 @@ The build writes:
 - `ralph/how-it-works/index.html` — plain-English technology tour (from
   `templates/ralph-how-it-works.html`; subpages are declared in
   `RALPH_SUBPAGES` in `scripts/build_weekly_ralph.py`)
+- `ralph/whats-new/index.html` — running changelog rendered from
+  `content/ralph-whats-new.toml` (add an `[[entries]]` block with `date`,
+  `title`, and Markdown `body`, then run `just check`; the landing page's
+  "New" teaser shows the most recent entry automatically)
 - `weekly-ralph/index.html` — issue archive
 - `weekly-ralph/issues/<slug>/index.html` — permanent issue page
 - `weekly-ralph/feed.xml` — RSS feed

@@ -1,0 +1,41 @@
+# Running changelog for the Ralph project.
+# Add a new [[entries]] block at any position (newest first is customary);
+# the build sorts by date descending. Then run `just check`.
+# Public page — no member names, no private details.
+
+[[entries]]
+date = "2026-07-28"
+title = "New skill: “Whassup with…”"
+body = """
+Ralph can now give you a quick snapshot of what people are saying on X about a
+current news story, sports event, public figure, company, product launch, or
+other trending topic. Text him `whassup with <topic>`&mdash;for example,
+*whassup with the World Cup?* or *whassup with the latest iPhone
+launch?*&mdash;and about a minute later he'll summarize what happened, why
+people are discussing it, the major viewpoints, and notable posts you can read
+for yourself.
+
+Be sure to spell it &ldquo;whassup&rdquo; so Ralph recognizes the request. It
+works for public topics&mdash;not personal questions&mdash;and it reflects
+public conversation on X, which may include opinions, rumors, or incorrect
+claims.
+"""
+
+[[entries]]
+date = "2026-07-28"
+title = "Ralph got a front door"
+body = """
+This website. A proper introduction to who Ralph is, why he exists, and what
+he does all day&mdash;plus a plain-English tour of how he works, right down to
+the full roster of AI models under the hood. Even the conversation screenshot
+on the front page is real.
+"""
+
+[[entries]]
+date = "2026-07-27"
+title = "The Weekly Ralph began publishing"
+body = """
+A public collection of real-world ways people put Ralph to work, anonymized
+and approved by the people involved. Issue 001: a dog painted like a deer, a
+pool pump schedule, and a very specific scent machine.
+"""
