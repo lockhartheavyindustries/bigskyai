@@ -291,34 +291,6 @@ h1 {
   color: var(--coral);
 }
 
-.rules {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  padding: 46px 44px 50px;
-  border-radius: 18px;
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 55%),
-    var(--teal-dark);
-  color: var(--cream);
-  box-shadow: var(--shadow);
-}
-
-.rules h3 {
-  margin: 0 0 10px;
-  color: var(--gold);
-  font-size: 0.82rem;
-  font-weight: 950;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.rules p {
-  margin: 0;
-  color: rgba(255, 250, 240, 0.82);
-  font-size: 1.02rem;
-}
-
 .newsletter {
   padding: 130px 0 110px;
 }
@@ -665,12 +637,6 @@ footer {
 
   .works-figure {
     max-width: 340px;
-  }
-
-  .rules {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 38px 32px 42px;
   }
 
   .newsletter-heading {
