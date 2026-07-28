@@ -157,6 +157,14 @@ h1 {
 
 .story-copy > p:first-of-type { margin-top: 34px; }
 
+.name-link {
+  text-decoration-color: rgba(13, 111, 106, 0.4);
+  text-underline-offset: 3px;
+}
+
+.name-link:hover,
+.name-link:focus-visible { color: var(--coral); }
+
 .story-figure {
   margin: 0;
   align-self: center;
