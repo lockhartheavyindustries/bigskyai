@@ -28,6 +28,5 @@ request for editorial review. Merging the approved change publishes it.
 
 ## Public URLs that must remain stable
 
-- `/privacy-policy.html`
-- `/terms-and-conditions.html`
+- `/weekly-ralph/`
 - `/strummer/`
