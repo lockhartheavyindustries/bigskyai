@@ -202,6 +202,35 @@ h1 {
 
 .story-body p { margin: 0 0 1.35em; }
 
+.story-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 34px 0 8px;
+}
+
+.story-media-grid figure {
+  margin: 0;
+}
+
+.story-media-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.story-media-grid figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .takeaway {
   max-width: 720px;
   margin-top: 34px;
@@ -439,5 +468,9 @@ footer {
   .takeaway,
   .try-it {
     padding: 22px;
+  }
+
+  .story-media-grid {
+    grid-template-columns: 1fr;
   }
 }

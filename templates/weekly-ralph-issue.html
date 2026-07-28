@@ -54,6 +54,17 @@
             <p class="story-lede">{{ story.lede }}</p>
             <div class="story-body">{{ story.body|markdown }}</div>
 
+            {% if story.media %}
+            <div class="story-media-grid">
+              {% for media in story.media %}
+              <figure>
+                <img src="{{ media.src }}" alt="{{ media.alt }}" loading="lazy" decoding="async">
+                <figcaption>{{ media.caption }}</figcaption>
+              </figure>
+              {% endfor %}
+            </div>
+            {% endif %}
+
             <div class="takeaway">
               <p class="takeaway-label">Why this worked</p>
               <p>{{ story.takeaway }}</p>
