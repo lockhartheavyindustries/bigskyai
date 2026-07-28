@@ -232,6 +232,7 @@
     footer {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 24px;
       padding: 28px 0 44px;
       border-top: 1px solid var(--line);
@@ -241,8 +242,15 @@
 
     footer nav {
       display: flex;
-      gap: 18px;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-weight: 700;
     }
+
+    footer nav a { text-decoration: none; }
+
+    footer nav a:hover,
+    footer nav a:focus-visible { color: var(--coral); }
 
     @media (max-width: 760px) {
       .hero,
@@ -266,8 +274,6 @@
       footer {
         width: min(100% - 28px, 1120px);
       }
-
-      .header-note { display: none; }
 
       .project {
         min-height: 340px;
@@ -332,6 +338,13 @@
   </main>
 
   <footer>
+    <a class="wordmark" href="./">BIG SKY AI</a>
+    <nav aria-label="Footer">
+      <a href="ralph/">Meet Ralph</a>
+      <a href="ralph/how-it-works/">How Ralph works</a>
+      <a href="weekly-ralph/">The Weekly Ralph</a>
+      <a href="strummer/">Strummer</a>
+    </nav>
     <span>Big Sky AI · Montana</span>
   </footer>
 

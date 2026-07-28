@@ -284,20 +284,25 @@ h1 {
 footer {
   display: flex;
   justify-content: space-between;
-  gap: 28px;
+  align-items: center;
+  gap: 24px 28px;
   padding: 34px 0 48px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-footer p { margin: 5px 0 0; }
-
-footer nav {
+.footer-nav {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-weight: 700;
 }
+
+.footer-nav a { text-decoration: none; }
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible { color: var(--coral); }
 
 /* Archive */
 .archive-hero {
