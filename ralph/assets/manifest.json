@@ -1,0 +1,19 @@
+{
+  "collection": "Ralph project assets",
+  "version": 1,
+  "base_url": "https://lockhartheavyindustries.github.io/bigskyai/ralph/assets/",
+  "items": [
+    {
+      "id": "ralph-wiggum-thinking",
+      "kind": "image",
+      "file": "images/ralph-wiggum-thinking.webp",
+      "media_type": "image/webp",
+      "width": 640,
+      "height": 360,
+      "sha256": "1409a4ad0652e20f3836bd04eb12366c1b268d4e70232fe3c5f217af5456c7ae",
+      "alt": "Ralph Wiggum thinking with a finger to his nose",
+      "provenance": "Provided by the project owner on 2026-07-27.",
+      "rights": "Rights status not documented in this repository."
+    }
+  ]
+}
