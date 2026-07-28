@@ -1,6 +1,6 @@
 {
   "collection": "Ralph project assets",
-  "version": 1,
+  "version": 2,
   "base_url": "https://lockhartheavyindustries.github.io/bigskyai/ralph/assets/",
   "items": [
     {
@@ -12,6 +12,54 @@
       "height": 360,
       "sha256": "1409a4ad0652e20f3836bd04eb12366c1b268d4e70232fe3c5f217af5456c7ae",
       "alt": "Ralph Wiggum thinking with a finger to his nose",
+      "provenance": "Provided by the project owner on 2026-07-27.",
+      "rights": "Rights status not documented in this repository."
+    },
+    {
+      "id": "ralph-excited-green-closeup",
+      "kind": "image",
+      "file": "images/ralph-excited-green-closeup.png",
+      "media_type": "image/png",
+      "width": 400,
+      "height": 400,
+      "sha256": "11b8b004f0e7530463a24ac9d518fab326b6e54518a279694746641966a8753b",
+      "alt": "Close-up of an excited Ralph Wiggum against a green background",
+      "provenance": "Provided by the project owner on 2026-07-27.",
+      "rights": "Rights status not documented in this repository."
+    },
+    {
+      "id": "ralph-thinking-blue-sweater",
+      "kind": "image",
+      "file": "images/ralph-thinking-blue-sweater.png",
+      "media_type": "image/png",
+      "width": 415,
+      "height": 423,
+      "sha256": "f000655e54f193171b17cca979b16fa25a914230f71dfc77e6a53529f033f3d8",
+      "alt": "Ralph Wiggum thinking in a blue sweater",
+      "provenance": "Provided by the project owner on 2026-07-27.",
+      "rights": "Rights status not documented in this repository."
+    },
+    {
+      "id": "ralph-thinking-full-body",
+      "kind": "image",
+      "file": "images/ralph-thinking-full-body.png",
+      "media_type": "image/png",
+      "width": 350,
+      "height": 572,
+      "sha256": "8024f1b23f4aa53d1021d4c85d3915fb4e6b3541bffc0a80ce92afbff1142a9e",
+      "alt": "Full-body Ralph Wiggum thinking with a finger to his nose",
+      "provenance": "Provided by the project owner on 2026-07-27.",
+      "rights": "Rights status not documented in this repository."
+    },
+    {
+      "id": "ralph-waving-pink",
+      "kind": "image",
+      "file": "images/ralph-waving-pink.png",
+      "media_type": "image/png",
+      "width": 576,
+      "height": 432,
+      "sha256": "167246977acc53806cfd8cb41863ca8629971347388e1945664d77fa5e6ee5ac",
+      "alt": "Ralph Wiggum waving against a pink background",
       "provenance": "Provided by the project owner on 2026-07-27.",
       "rights": "Rights status not documented in this repository."
     }
