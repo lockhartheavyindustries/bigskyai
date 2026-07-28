@@ -135,17 +135,15 @@
       box-shadow: 0 30px 80px rgba(7, 38, 36, 0.18);
     }
 
-    .project.primary {
-      grid-column: 1 / -1;
-      min-height: 420px;
+    .project.ralph {
       background:
         linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 50%),
         var(--teal-dark);
       color: var(--white);
     }
 
-    .project.primary::after {
-      content: "WR";
+    .project.ralph::after {
+      content: "R";
       position: absolute;
       right: -0.06em;
       bottom: -0.28em;
@@ -157,8 +155,6 @@
     }
 
     .project.strummer {
-      grid-column: 1 / -1;
-      min-height: 380px;
       background:
         linear-gradient(145deg, rgba(215, 173, 87, 0.2), transparent 55%),
         var(--cream);
@@ -180,7 +176,7 @@
       text-transform: uppercase;
     }
 
-    .primary .project-kicker { color: var(--gold); }
+    .ralph .project-kicker { color: var(--gold); }
 
     .project-title {
       max-width: 760px;
@@ -190,10 +186,6 @@
       letter-spacing: -0.06em;
     }
 
-    .project:not(.primary) .project-title {
-      font-size: clamp(2.1rem, 4vw, 3.7rem);
-    }
-
     .project-copy {
       max-width: 680px;
       margin: 22px 0 0;
@@ -201,7 +193,7 @@
       font-size: 1.05rem;
     }
 
-    .primary .project-copy {
+    .ralph .project-copy {
       color: rgba(255, 255, 255, 0.78);
     }
 
@@ -236,10 +228,6 @@
       .hero {
         gap: 28px;
         padding: 72px 0 58px;
-      }
-
-      .project.primary {
-        grid-column: auto;
       }
 
       footer {
@@ -284,11 +272,11 @@
     </section>
 
     <section class="projects" aria-label="Big Sky AI projects">
-      <a class="project primary" href="weekly-ralph/">
-        <p class="project-kicker">Newsletter · New</p>
-        <h2 class="project-title">The Weekly Ralph</h2>
-        <p class="project-copy">Unexpected, useful ways real people are putting an AI assistant to work—shared without the giant group text.</p>
-        <span class="project-link">Read Issue 001 →</span>
+      <a class="project ralph" href="ralph/">
+        <p class="project-kicker">Personal AI assistant</p>
+        <h2 class="project-title">Ralph</h2>
+        <p class="project-copy">A useful AI companion helping a small community research, create, learn, and get unstuck.</p>
+        <span class="project-link">Meet Ralph →</span>
       </a>
 
       <a class="project strummer" href="strummer/">
