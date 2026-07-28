@@ -31,6 +31,12 @@ The build writes:
 GitHub Pages publishes from the root of `main`. Use a branch and draft pull
 request for editorial review. Merging the approved change publishes it.
 
+## Ralph assets
+
+Reusable public media lives in [`ralph/assets/`](ralph/assets/). Add collection
+images under `ralph/assets/images/` and record their metadata in
+`ralph/assets/manifest.json`.
+
 ## Public URLs that must remain stable
 
 - `/weekly-ralph/`
