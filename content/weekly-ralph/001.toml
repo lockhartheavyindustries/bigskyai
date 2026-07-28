@@ -2,13 +2,28 @@ issue = 1
 slug = "001"
 published = "2026-07-27"
 title = "AI gets interesting when the question gets specific"
-description = "Two surprisingly useful ways a small community put Ralph to work: tuning a pool pump and shopping for an HVAC scent system."
-dek = "Two real requests. No futuristic demos. Just people bringing oddly specific problems to an AI assistant—and getting something useful back."
+description = "Three surprisingly useful ways a small community put Ralph to work: transforming a pet photo, tuning a pool pump, and shopping for an HVAC scent system."
+dek = "Three real requests. No futuristic demos. Just people bringing oddly specific problems to an AI assistant—and getting something useful back."
 editor_note = "The stories in this issue are drawn from real conversations, anonymized and lightly edited for clarity. Personal details and source conversations remain private."
 og_image = "https://lockhartheavyindustries.github.io/bigskyai/ralph/assets/ralph-og.png"
 
 [[stories]]
 number = "01"
+category = "Creative image work"
+title = "Make this dog look like a fancy groomer painted it as a deer"
+lede = "The request was playful. The success criterion was surprisingly demanding: change the coat, keep the dog."
+body = """
+A user sent Ralph a dog photo with a wonderfully specific request: make the dog look as if a professional creative groomer had painted it to resemble a deer, and make the result as realistic as possible.
+
+The edit arrived looking like the same dog in an elaborate coat treatment—not a random replacement animal. The user liked that the features stayed recognizable and declared it mostly “spot on,” while noting that the cheekbones had narrowed a little.
+
+That critique mattered. Ralph identified exactly what a second pass should protect: lock the muzzle and cheek width, then modify only the color and coat pattern. The conversation moved naturally from “make something fun” to a precise art-direction note for the next iteration.
+"""
+takeaway = "Good creative work is iterative. A useful assistant should preserve what matters, accept concrete criticism, and turn it into a better next instruction."
+prompt = "Edit this photo realistically. Preserve the subject’s face, proportions, pose, lighting, and identity. Change only [specific feature], then tell me what may have drifted."
+
+[[stories]]
+number = "02"
 category = "Home equipment"
 title = "Turn a pile of pool equipment specs into a usable schedule"
 lede = "The user did not need a generic article about pool pumps. They needed starting settings for this pool."
@@ -24,7 +39,7 @@ prompt = "Help me create starting settings for this equipment. Here are the exac
 caveat = "Equipment settings should be checked against manufacturer documentation and adjusted for the actual plumbing, flow, and safety controls."
 
 [[stories]]
-number = "02"
+number = "03"
 category = "Constraint-based research"
 title = "Find a whole-house scent machine—but only one that connects to the HVAC"
 lede = "One follow-up sentence changed the shopping category completely."
