@@ -2,43 +2,13 @@ issue = 1
 slug = "001"
 published = "2026-07-27"
 title = "AI gets interesting when the question gets specific"
-description = "Five surprisingly useful ways a small community put Ralph to work: visualizing a television, transforming a pet photo, tuning a pool pump, preparing for an exam, and shopping for an HVAC scent system."
-dek = "Five real requests. No futuristic demos. Just people bringing oddly specific problems to an AI assistant—and getting something useful back."
+description = "Two surprisingly useful ways a small community put Ralph to work: tuning a pool pump and shopping for an HVAC scent system."
+dek = "Two real requests. No futuristic demos. Just people bringing oddly specific problems to an AI assistant—and getting something useful back."
 editor_note = "The stories in this issue are drawn from real conversations, anonymized and lightly edited for clarity. Personal details and source conversations remain private."
 og_image = "https://lockhartheavyindustries.github.io/bigskyai/weekly-ralph/assets/weekly-ralph-001-og.png"
 
 [[stories]]
 number = "01"
-category = "Visual decision support"
-title = "Will the smaller television actually feel smaller?"
-lede = "A product comparison became much easier once the answer appeared inside the room."
-body = """
-Someone was choosing between a 98-inch TCL and an 83-inch LG OLED. Specifications could explain the difference, but they could not answer the real question: what would the smaller screen look like on this exact wall?
-
-Ralph started with a room photo and built a visual comparison. When the first AI-generated mockup made the scale look wrong, the user called it out. Ralph then switched methods: he used the manufacturers’ dimensions, measured the television bounds in the photo, and composited the LG at exactly 84.7 percent of the TCL’s width.
-
-The final image showed the real gaps—about six and a half inches on each side and less than four inches above and below. That was the version the user called “perfect.”
-"""
-takeaway = "AI is not always the final tool. The useful move was recognizing when image generation should give way to measurement and exact compositing."
-prompt = "I’m comparing two products that occupy physical space. Here are their dimensions and a photo of the room. Make a true-to-scale visual comparison and show your measurements."
-
-[[stories]]
-number = "02"
-category = "Creative image work"
-title = "Make this dog look like a fancy groomer painted it as a deer"
-lede = "The request was playful. The success criterion was surprisingly demanding: change the coat, keep the dog."
-body = """
-A user sent Ralph a dog photo with a wonderfully specific request: make the dog look as if a professional creative groomer had painted it to resemble a deer, and make the result as realistic as possible.
-
-The edit arrived looking like the same dog in an elaborate coat treatment—not a random replacement animal. The user liked that the features stayed recognizable and declared it mostly “spot on,” while noting that the cheekbones had narrowed a little.
-
-That critique mattered. Ralph identified exactly what a second pass should protect: lock the muzzle and cheek width, then modify only the color and coat pattern. The conversation moved naturally from “make something fun” to a precise art-direction note for the next iteration.
-"""
-takeaway = "Good creative work is iterative. A useful assistant should preserve what matters, accept concrete criticism, and turn it into a better next instruction."
-prompt = "Edit this photo realistically. Preserve the subject’s face, proportions, pose, lighting, and identity. Change only [specific feature], then tell me what may have drifted."
-
-[[stories]]
-number = "03"
 category = "Home equipment"
 title = "Turn a pile of pool equipment specs into a usable schedule"
 lede = "The user did not need a generic article about pool pumps. They needed starting settings for this pool."
@@ -54,22 +24,7 @@ prompt = "Help me create starting settings for this equipment. Here are the exac
 caveat = "Equipment settings should be checked against manufacturer documentation and adjusted for the actual plumbing, flow, and safety controls."
 
 [[stories]]
-number = "04"
-category = "Learning and coaching"
-title = "A forgotten exam plan turned into a live readiness check"
-lede = "Instead of handing over a study guide, Ralph tested what the learner already knew."
-body = """
-A user preparing for an official certification exam for their job realized that the planned readiness work had slipped. Ralph picked up the prior context—the exam date and major knowledge areas—and immediately proposed a short diagnostic.
-
-The learner answered ten mixed questions and scored nine out of ten. Ralph explained the miss, then moved into harder scenario questions where several answers sounded plausible. The next result exposed a more useful weakness: distinguishing observations, minor nonconformities, and major system failures.
-
-The coaching adapted in real time. Strong fundamentals did not trigger more beginner review; they triggered harder questions. Wrong answers did not merely receive a red X; they became a compact rule the learner could reuse on the exam.
-"""
-takeaway = "A good AI tutor should diagnose before teaching, raise the difficulty when warranted, and convert mistakes into memorable decision rules."
-prompt = "I’m preparing for [exam] on [date]. Give me a short mixed diagnostic first. Score it, identify patterns in my misses, and then adapt the next questions to my weak areas."
-
-[[stories]]
-number = "05"
+number = "02"
 category = "Constraint-based research"
 title = "Find a whole-house scent machine—but only one that connects to the HVAC"
 lede = "One follow-up sentence changed the shopping category completely."
