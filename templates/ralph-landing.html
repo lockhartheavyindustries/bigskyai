@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Meet Ralph, a useful AI companion helping a small community research, create, learn, and get unstuck.">
+  <meta name="theme-color" content="#063f3d">
+  <meta property="og:title" content="Ralph · Big Sky AI">
+  <meta property="og:description" content="Useful AI, made personal. Meet Ralph and read stories from the people putting him to work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site_url }}/ralph/">
+  <meta property="og:image" content="{{ site_url }}/ralph/assets/ralph-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="{{ site_url }}/ralph/">
+  <link rel="stylesheet" href="assets/ralph.css">
+  <title>Ralph · Big Sky AI</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../">BIG SKY AI</a>
+    <a class="publication-link" href="../weekly-ralph/">The Weekly Ralph</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A Big Sky AI project</p>
+        <h1>Ralph</h1>
+        <p class="hero-lede">A useful AI companion helping a small community research, create, learn, and get unstuck.</p>
+      </div>
+      <div class="hero-note">
+        <span>Useful AI</span>
+        <strong>made personal.</strong>
+      </div>
+    </section>
+
+    <section class="intro">
+      <p class="section-label">What Ralph does</p>
+      <div>
+        <h2>Start with the real problem.</h2>
+        <p>Ralph is most useful when the question is specific: compare two televisions inside an actual room, tune equipment around a real system, turn exam prep into adaptive coaching, or chase down a product with one non-negotiable constraint.</p>
+        <p>He carries context, changes methods when the first approach misses, and helps turn a vague need into something concrete enough to use.</p>
+      </div>
+    </section>
+
+    <section class="capabilities" aria-label="Ways people use Ralph">
+      <article>
+        <span>01</span>
+        <h3>Research</h3>
+        <p>Narrow choices around the constraints that actually matter.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Create</h3>
+        <p>Shape images, ideas, and drafts through practical iteration.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Coach</h3>
+        <p>Diagnose first, then adapt the lesson to the learner.</p>
+      </article>
+      <article>
+        <span>04</span>
+        <h3>Operate</h3>
+        <p>Turn specifications and context into a testable next step.</p>
+      </article>
+    </section>
+
+    <section class="newsletter">
+      <div class="newsletter-heading">
+        <div>
+          <p class="section-label">Stories from the community</p>
+          <h2>The Weekly Ralph</h2>
+        </div>
+        <p>A public collection of anonymized, real-world ways people put Ralph to work—without sending a massive group text.</p>
+      </div>
+
+      <div class="issue-list">
+        {% for issue in issues %}
+        <a class="issue" href="../weekly-ralph/issues/{{ issue.slug }}/">
+          <div class="issue-meta">
+            <span>Issue {{ "%03d"|format(issue.issue) }}</span>
+            <time datetime="{{ issue.published }}">{{ issue.display_date }}</time>
+          </div>
+          <h3>{{ issue.title }}</h3>
+          <p>{{ issue.dek }}</p>
+          <span class="read-link">Read the issue →</span>
+        </a>
+        {% endfor %}
+      </div>
+
+      <a class="archive-link" href="../weekly-ralph/">View the publication archive and RSS feed →</a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="../">BIG SKY AI</a>
+    <span>Useful AI, made visible.</span>
+  </footer>
+</body>
+</html>

@@ -3,12 +3,14 @@
 This repository is the public GitHub Pages home for Big Sky AI experiments and
 publications.
 
-## The Weekly Ralph
+## Ralph and The Weekly Ralph
 
-Public issue source lives in `content/weekly-ralph/`. It must already be
-anonymized and approved before it enters this public repository. Raw chats,
-private QMD excerpts, phone numbers, real names, and unapproved media belong in
-the private OpenClaw workspace—not here.
+Ralph is a top-level Big Sky AI project at `ralph/`. Its landing page and The
+Weekly Ralph issue archive are generated from the public issue source in
+`content/weekly-ralph/`. That source must already be anonymized and approved
+before it enters this public repository. Raw chats, private QMD excerpts, phone
+numbers, real names, and unapproved media belong in the private OpenClaw
+workspace—not here.
 
 Create a new issue by copying the previous TOML file, incrementing `issue` and
 `slug`, and replacing the editorial content. Then run:
@@ -19,6 +21,7 @@ just check
 
 The build writes:
 
+- `ralph/index.html` — Ralph project landing page and newsletter index
 - `weekly-ralph/index.html` — issue archive
 - `weekly-ralph/issues/<slug>/index.html` — permanent issue page
 - `weekly-ralph/feed.xml` — RSS feed
@@ -29,4 +32,5 @@ request for editorial review. Merging the approved change publishes it.
 ## Public URLs that must remain stable
 
 - `/weekly-ralph/`
+- `/ralph/`
 - `/strummer/`

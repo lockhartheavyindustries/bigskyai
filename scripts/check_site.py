@@ -1,4 +1,4 @@
-"""Check public Weekly Ralph output for broken local links and privacy leaks."""
+"""Check Ralph's public pages for broken local links and privacy leaks."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from urllib.parse import unquote, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC_DIR = ROOT / "weekly-ralph"
+PUBLIC_DIRS = (ROOT / "ralph", ROOT / "weekly-ralph")
 DENYLIST = (
     "Mellissa",
     "Colleen",
@@ -53,9 +53,13 @@ def resolve_local_link(source: Path, link: str) -> Path | None:
 
 def main() -> None:
     errors: list[str] = []
-    html_files = sorted(PUBLIC_DIR.rglob("*.html"))
+    html_files = sorted(
+        path
+        for public_dir in PUBLIC_DIRS
+        for path in public_dir.rglob("*.html")
+    )
     if not html_files:
-        raise SystemExit("No generated Weekly Ralph HTML found.")
+        raise SystemExit("No generated Ralph HTML found.")
 
     for path in html_files:
         text = path.read_text(encoding="utf-8")
@@ -87,7 +91,7 @@ def main() -> None:
 
     if errors:
         raise SystemExit("\n".join(errors))
-    print(f"Checked {len(html_files)} Weekly Ralph HTML pages.")
+    print(f"Checked {len(html_files)} Ralph and Weekly Ralph HTML pages.")
 
 
 if __name__ == "__main__":
