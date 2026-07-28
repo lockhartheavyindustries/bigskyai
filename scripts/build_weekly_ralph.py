@@ -30,6 +30,12 @@ OUTPUT_DIR = ROOT / "weekly-ralph"
 RALPH_OUTPUT_DIR = ROOT / "ralph"
 SITE_URL = "https://lockhartheavyindustries.github.io/bigskyai"
 
+# Static Ralph subpages rendered alongside the landing page:
+# output directory name under ralph/ -> template filename.
+RALPH_SUBPAGES = {
+    "how-it-works": "ralph-how-it-works.html",
+}
+
 
 def load_issues() -> list[dict]:
     issues: list[dict] = []
@@ -149,6 +155,15 @@ def build_ralph(destination: Path, issues: list[dict]) -> None:
         template.render(issues=issues, site_url=SITE_URL),
         encoding="utf-8",
     )
+
+    for slug, template_name in RALPH_SUBPAGES.items():
+        subpage_template = environment.get_template(template_name)
+        subpage_dir = destination / slug
+        subpage_dir.mkdir(parents=True, exist_ok=True)
+        (subpage_dir / "index.html").write_text(
+            subpage_template.render(issues=issues, site_url=SITE_URL),
+            encoding="utf-8",
+        )
 
 
 def compare_directories(expected: Path, actual: Path) -> list[str]:

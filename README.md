@@ -24,6 +24,9 @@ just check
 The build writes:
 
 - `ralph/index.html` — Ralph project landing page and newsletter index
+- `ralph/how-it-works/index.html` — plain-English technology tour (from
+  `templates/ralph-how-it-works.html`; subpages are declared in
+  `RALPH_SUBPAGES` in `scripts/build_weekly_ralph.py`)
 - `weekly-ralph/index.html` — issue archive
 - `weekly-ralph/issues/<slug>/index.html` — permanent issue page
 - `weekly-ralph/feed.xml` — RSS feed
