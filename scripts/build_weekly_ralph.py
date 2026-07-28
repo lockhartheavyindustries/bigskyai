@@ -25,6 +25,7 @@ from markupsafe import Markup
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT_DIR = ROOT / "content" / "weekly-ralph"
+WHATS_NEW_PATH = ROOT / "content" / "ralph-whats-new.toml"
 TEMPLATE_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "weekly-ralph"
 RALPH_OUTPUT_DIR = ROOT / "ralph"
@@ -34,6 +35,7 @@ SITE_URL = "https://lockhartheavyindustries.github.io/bigskyai"
 # output directory name under ralph/ -> template filename.
 RALPH_SUBPAGES = {
     "how-it-works": "ralph-how-it-works.html",
+    "whats-new": "ralph-whats-new.html",
 }
 
 
@@ -49,6 +51,17 @@ def load_issues() -> list[dict]:
         issue["url"] = f"{SITE_URL}/weekly-ralph/issues/{issue['slug']}/"
         issues.append(issue)
     return sorted(issues, key=lambda item: item["issue"], reverse=True)
+
+
+def load_whats_new() -> list[dict]:
+    with WHATS_NEW_PATH.open("rb") as handle:
+        entries = tomllib.load(handle)["entries"]
+    for entry in entries:
+        published = date.fromisoformat(entry["date"])
+        entry["display_date"] = (
+            f"{published:%B} {published.day}, {published.year}"
+        )
+    return sorted(entries, key=lambda item: item["date"], reverse=True)
 
 
 def render_markdown(value: str) -> Markup:
@@ -139,7 +152,11 @@ def build_weekly_ralph(destination: Path, issues: list[dict]) -> None:
     (destination / "feed.xml").write_text(build_rss(issues), encoding="utf-8")
 
 
-def build_ralph(destination: Path, issues: list[dict]) -> None:
+def build_ralph(
+    destination: Path,
+    issues: list[dict],
+    whats_new: list[dict],
+) -> None:
     if not issues:
         raise SystemExit("No Weekly Ralph issue source files found.")
 
@@ -150,9 +167,15 @@ def build_ralph(destination: Path, issues: list[dict]) -> None:
     if source_assets.resolve() != destination_assets.resolve():
         shutil.copytree(source_assets, destination_assets, dirs_exist_ok=True)
 
+    context = {
+        "issues": issues,
+        "site_url": SITE_URL,
+        "whats_new": whats_new,
+    }
+
     template = environment.get_template("ralph-landing.html")
     (destination / "index.html").write_text(
-        template.render(issues=issues, site_url=SITE_URL),
+        template.render(**context),
         encoding="utf-8",
     )
 
@@ -161,7 +184,7 @@ def build_ralph(destination: Path, issues: list[dict]) -> None:
         subpage_dir = destination / slug
         subpage_dir.mkdir(parents=True, exist_ok=True)
         (subpage_dir / "index.html").write_text(
-            subpage_template.render(issues=issues, site_url=SITE_URL),
+            subpage_template.render(**context),
             encoding="utf-8",
         )
 
@@ -200,6 +223,7 @@ def main() -> None:
     )
     args = parser.parse_args()
     issues = load_issues()
+    whats_new = load_whats_new()
 
     if args.check:
         with tempfile.TemporaryDirectory(prefix="weekly-ralph-") as temporary:
@@ -207,7 +231,7 @@ def main() -> None:
             expected_weekly_ralph = expected_root / "weekly-ralph"
             expected_ralph = expected_root / "ralph"
             build_weekly_ralph(expected_weekly_ralph, issues)
-            build_ralph(expected_ralph, issues)
+            build_ralph(expected_ralph, issues, whats_new)
             differences = compare_directories(
                 expected_weekly_ralph,
                 OUTPUT_DIR,
@@ -230,8 +254,12 @@ def main() -> None:
         if backup.exists():
             shutil.copytree(backup, preserved_assets)
     build_weekly_ralph(OUTPUT_DIR, issues)
-    build_ralph(RALPH_OUTPUT_DIR, issues)
-    print(f"Built Ralph landing page and {len(issues)} Weekly Ralph issue(s).")
+    build_ralph(RALPH_OUTPUT_DIR, issues, whats_new)
+    print(
+        f"Built Ralph landing page, {len(RALPH_SUBPAGES)} subpage(s), "
+        f"{len(whats_new)} What's-new entrie(s), and "
+        f"{len(issues)} Weekly Ralph issue(s)."
+    )
 
 
 if __name__ == "__main__":
