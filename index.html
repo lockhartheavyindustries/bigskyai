@@ -190,6 +190,30 @@
         var(--cream);
     }
 
+    .project.powbot {
+      display: flex;
+      min-height: 420px;
+      grid-column: 1 / -1;
+      align-items: center;
+      color: var(--white);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(5, 20, 16, 0.96) 0%,
+          rgba(5, 20, 16, 0.84) 42%,
+          rgba(5, 20, 16, 0.28) 74%,
+          rgba(5, 20, 16, 0.08) 100%
+        ),
+        url("powbot/assets/powbot-bluebird-hero.jpg") center / cover no-repeat;
+    }
+
+    .powbot-body {
+      position: relative;
+      z-index: 1;
+      width: min(54%, 620px);
+      padding-bottom: 42px;
+    }
+
     .project-kicker,
     .project-title,
     .project-copy,
@@ -207,6 +231,7 @@
     }
 
     .ralph .project-kicker { color: var(--gold); }
+    .powbot .project-kicker { color: #c7edf1; }
 
     .project-title {
       max-width: 760px;
@@ -225,6 +250,10 @@
 
     .ralph .project-copy {
       color: rgba(255, 255, 255, 0.78);
+    }
+
+    .powbot .project-copy {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .project-link {
@@ -297,6 +326,24 @@
         max-width: 220px;
       }
 
+      .project.powbot {
+        min-height: 440px;
+        align-items: flex-end;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(5, 20, 16, 0.3) 0%,
+            rgba(5, 20, 16, 0.72) 52%,
+            rgba(5, 20, 16, 0.98) 100%
+          ),
+          url("powbot/assets/powbot-bluebird-hero.jpg") 68% center / cover no-repeat;
+      }
+
+      .powbot-body {
+        width: 100%;
+        padding-bottom: 46px;
+      }
+
       .project-link {
         left: 26px;
         bottom: 24px;
@@ -339,6 +386,15 @@
         <span class="project-link">Explore the concept →</span>
       </a>
 
+      <a class="project powbot" href="powbot/">
+        <div class="powbot-body">
+          <p class="project-kicker">Morning ski decision brief</p>
+          <h2 class="project-title">PowBot</h2>
+          <p class="project-copy">How&rsquo;s the snow? PowBot knows. A fast, evidence-backed answer for Bridger Bowl and Big Sky before you leave home.</p>
+        </div>
+        <span class="project-link">See the concept →</span>
+      </a>
+
     </section>
   </main>
 
@@ -347,6 +403,7 @@
     <nav aria-label="Footer">
       <a href="ralph/">Ralph</a>
       <a href="strummer/">Strummer</a>
+      <a href="powbot/">PowBot</a>
     </nav>
     <span>Big Sky AI · Montana</span>
   </footer>

@@ -62,3 +62,4 @@ Use campaign parameters when distributing an issue, for example:
 - `/weekly-ralph/`
 - `/ralph/`
 - `/strummer/`
+- `/powbot/`

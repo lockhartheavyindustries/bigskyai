@@ -79,6 +79,12 @@ a {
   border-bottom: 1px solid var(--line-light);
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -100,6 +106,18 @@ a {
   border-radius: 11px 11px 11px 3px;
   font-size: 0.9rem;
   font-weight: 850;
+}
+
+.back-link {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.76rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.back-link:hover {
+  color: var(--white);
 }
 
 .pilot-badge {
@@ -242,7 +260,9 @@ a {
 
 .button:focus-visible,
 .text-link:focus-visible,
-.brand:focus-visible {
+.brand:focus-visible,
+.back-link:focus-visible,
+.footer-home:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 4px;
 }
@@ -893,6 +913,18 @@ a {
   font-size: 0.76rem;
 }
 
+.footer-home {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.footer-home:hover {
+  color: var(--white);
+}
+
 @media (max-width: 920px) {
   .hero {
     min-height: auto;
@@ -976,6 +1008,14 @@ a {
 
   .nav {
     min-height: 72px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .back-link {
+    font-size: 0.68rem;
   }
 
   .pilot-badge {
