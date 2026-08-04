@@ -29,7 +29,7 @@ WHATS_NEW_PATH = ROOT / "content" / "ralph-whats-new.toml"
 TEMPLATE_DIR = ROOT / "templates"
 OUTPUT_DIR = ROOT / "weekly-ralph"
 RALPH_OUTPUT_DIR = ROOT / "ralph"
-SITE_URL = "https://lockhartheavyindustries.github.io/bigskyai"
+SITE_URL = "https://bigskyai.ai"
 
 # Static Ralph subpages rendered alongside the landing page:
 # output directory name under ralph/ -> template filename.
