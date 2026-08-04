@@ -15,6 +15,7 @@ STATIC_PAGES = (
     ROOT / "strummer" / "index.html",
     ROOT / "powbot" / "index.html",
     ROOT / "firetower" / "index.html",
+    ROOT / "about" / "index.html",
 )
 GOATCOUNTER_MARKER = (
     'data-goatcounter="https://bigskyai.goatcounter.com/count"'
