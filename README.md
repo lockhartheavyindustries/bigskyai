@@ -35,8 +35,12 @@ The build writes:
 - `weekly-ralph/issues/<slug>/index.html` — permanent issue page
 - `weekly-ralph/feed.xml` — RSS feed
 
-GitHub Pages publishes from the root of `main`. Use a branch and draft pull
-request for editorial review. Merging the approved change publishes it.
+Production is served by Vercel (project `bigskyai`, team Big Sky AI) at
+https://bigskyai.ai from the root of `main` — no build step; generated output
+is committed. Use a branch and draft pull request for editorial review.
+Merging the approved change publishes it. GitHub Pages remains enabled as a
+legacy mirror so old lockhartheavyindustries.github.io links keep working;
+canonical URLs point at bigskyai.ai.
 
 ## Ralph assets
 
