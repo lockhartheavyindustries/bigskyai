@@ -217,6 +217,13 @@
 
     .tag.illustrative { color: var(--gold-bright); border-color: rgba(215, 173, 87, 0.35); }
 
+    /* Client dollar amounts are always withheld on showcases; percentages stay. */
+    .blur-usd {
+      filter: blur(0.22em);
+      opacity: 0.9;
+      user-select: none;
+    }
+
     .status-chip {
       display: inline-flex;
       align-items: center;
@@ -1103,7 +1110,7 @@
 
           <div class="cmd-nlv">
             <span class="metric-name">Net liquidation value</span>
-            <strong>$412.6K</strong>
+            <strong class="blur-usd" aria-hidden="true">$412.6K</strong>
           </div>
 
           <div class="ltv-row">
@@ -1127,11 +1134,11 @@
           <div class="cmd-stats">
             <div class="mini-stat">
               <span class="label">Excess liquidity</span>
-              <p class="value">$58.3K</p>
+              <p class="value blur-usd" aria-hidden="true">$58.3K</p>
             </div>
             <div class="mini-stat">
               <span class="label">Forward income</span>
-              <p class="value">$3.9K<span style="font-size:0.85rem; color: var(--muted);">/mo</span></p>
+              <p class="value"><span class="blur-usd" aria-hidden="true">$3.9K</span><span style="font-size:0.85rem; color: var(--muted);">/mo</span></p>
             </div>
             <div class="mini-stat">
               <span class="label">Reinvestment</span>
@@ -1281,7 +1288,7 @@
               </div>
               <div class="feed-line">
                 <span class="feed-time">PORTFOLIO</span>
-                <span class="feed-text">LTV opens <b>64.2%</b> &middot; MODE YELLOW. Excess liquidity <b>$58.3K</b>. No mode line crossed overnight.</span>
+                <span class="feed-text">LTV opens <b>64.2%</b> &middot; MODE YELLOW. Excess liquidity <b class="blur-usd" aria-hidden="true">$58.3K</b>. No mode line crossed overnight.</span>
               </div>
               <div class="feed-line">
                 <span class="feed-time">INCOME</span>
@@ -1367,7 +1374,7 @@
             <div class="income-stats">
               <div class="mini-stat">
                 <span class="label">Forward income</span>
-                <p class="value">$3.9K<span style="font-size:0.85rem; color: var(--muted);">/mo</span></p>
+                <p class="value"><span class="blur-usd" aria-hidden="true">$3.9K</span><span style="font-size:0.85rem; color: var(--muted);">/mo</span></p>
               </div>
               <div class="mini-stat">
                 <span class="label">Next 30 days</span>
@@ -1383,7 +1390,7 @@
             </div>
             <div class="cal-foot">
               <span class="key"><i style="background:#3987e5"></i>Pay date<i style="box-shadow: inset 0 0 0 1.5px #199e70; background:rgba(25,158,112,0.12)"></i>Ex-div<i style="background:rgba(255,255,255,0.05)"></i>Trading day</span>
-              <span class="cal-note">Jul 31 &middot; est. deposit <b>$4.1K</b></span>
+              <span class="cal-note">Jul 31 &middot; est. deposit <b class="blur-usd" aria-hidden="true">$4.1K</b></span>
             </div>
             <div class="gate-line" style="margin-top:16px">
               <span>confirmed from issuer or press release <span class="ok">&#10003;</span></span>
@@ -1400,15 +1407,15 @@
           <div class="decision-grid">
             <div class="decision-col">
               <h4>Proposed</h4>
-              <p class="trade-line">BUY &middot; $25.0K &middot; covered-call fund</p>
+              <p class="trade-line">BUY &middot; <span class="blur-usd" aria-hidden="true">$25.0K</span> &middot; covered-call fund</p>
               <p class="trade-sub">Modeled against live broker margin data. Preview only&nbsp;&mdash; nothing is submitted.</p>
             </div>
             <div class="decision-col">
               <h4>Post-trade preview</h4>
               <div class="delta-rows">
                 <div class="delta-row"><span>Loan-to-value</span><span class="vals">64.2% <span class="arrow">&rarr;</span> <span class="to-warn">65.6%</span></span></div>
-                <div class="delta-row"><span>Excess liquidity</span><span class="vals">$58.3K <span class="arrow">&rarr;</span> $52.1K</span></div>
-                <div class="delta-row"><span>Forward income</span><span class="vals">+$210/mo</span></div>
+                <div class="delta-row"><span>Excess liquidity</span><span class="vals"><span class="blur-usd" aria-hidden="true">$58.3K</span> <span class="arrow">&rarr;</span> <span class="blur-usd" aria-hidden="true">$52.1K</span></span></div>
+                <div class="delta-row"><span>Forward income</span><span class="vals"><span class="blur-usd" aria-hidden="true">+$210</span>/mo</span></div>
                 <div class="delta-row"><span>Stressed &minus;10%</span><span class="vals">LTV <span class="to-warn">72.9%</span> &middot; mode ORANGE</span></div>
               </div>
             </div>
@@ -1416,7 +1423,7 @@
               <h4>Advisory</h4>
               <div class="verdict-box">
                 <span class="v-head"><span class="dot warn" aria-hidden="true"></span>HOLD &middot; EXCEEDS CEILING</span>
-                <p>YELLOW mode caps new buys at the solver ceiling&nbsp;&mdash; <b style="color: var(--ink)">$9.8K</b> today. A $25K add survives the base case but breaches ORANGE under a &minus;10% stress.</p>
+                <p>YELLOW mode caps new buys at the solver ceiling&nbsp;&mdash; <b class="blur-usd" aria-hidden="true" style="color: var(--ink)">$9.8K</b> today. This add survives the base case but breaches ORANGE under a &minus;10% stress.</p>
               </div>
               <p class="approval-note">Advisory only &middot; human approval required for all actions</p>
             </div>
