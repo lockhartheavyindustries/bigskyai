@@ -38,6 +38,21 @@ RALPH_SUBPAGES = {
     "whats-new": "ralph-whats-new.html",
 }
 
+# Every public page path, for the generated sitemap. Root-level SEO
+# artifacts (sitemap.xml, robots.txt) are built from SITE_URL so a future
+# domain change stays a one-line edit.
+STATIC_SITE_PATHS = (
+    "",
+    "about/",
+    "ralph/",
+    "ralph/how-it-works/",
+    "ralph/whats-new/",
+    "weekly-ralph/",
+    "strummer/",
+    "powbot/",
+    "firetower/",
+)
+
 
 def load_issues() -> list[dict]:
     issues: list[dict] = []
@@ -112,6 +127,44 @@ def build_rss(issues: list[dict]) -> str:
     )
 
 
+def build_sitemap(issues: list[dict]) -> str:
+    entries: list[str] = []
+    for path in STATIC_SITE_PATHS:
+        entries.append(
+            "  <url>\n"
+            f"    <loc>{html.escape(f'{SITE_URL}/{path}')}</loc>\n"
+            "  </url>"
+        )
+    for issue in issues:
+        entries.append(
+            "  <url>\n"
+            f"    <loc>{html.escape(issue['url'])}</loc>\n"
+            f"    <lastmod>{issue['published']}</lastmod>\n"
+            "  </url>"
+        )
+    return "\n".join(
+        [
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+            *entries,
+            "</urlset>",
+            "",
+        ]
+    )
+
+
+def build_robots() -> str:
+    return "\n".join(
+        [
+            "User-agent: *",
+            "Allow: /",
+            "",
+            f"Sitemap: {SITE_URL}/sitemap.xml",
+            "",
+        ]
+    )
+
+
 def create_environment() -> Environment:
     environment = Environment(
         loader=FileSystemLoader(TEMPLATE_DIR),
@@ -140,7 +193,7 @@ def build_weekly_ralph(destination: Path, issues: list[dict]) -> None:
         issue_dir = destination / "issues" / issue["slug"]
         issue_dir.mkdir(parents=True, exist_ok=True)
         (issue_dir / "index.html").write_text(
-            issue_template.render(issue=issue),
+            issue_template.render(issue=issue, site_url=SITE_URL),
             encoding="utf-8",
         )
 
@@ -239,6 +292,15 @@ def main() -> None:
             differences.extend(
                 compare_directories(expected_ralph, RALPH_OUTPUT_DIR)
             )
+        for name, content in (
+            ("sitemap.xml", build_sitemap(issues)),
+            ("robots.txt", build_robots()),
+        ):
+            committed = ROOT / name
+            if not committed.exists():
+                differences.append(f"missing generated file: {name}")
+            elif committed.read_text(encoding="utf-8") != content:
+                differences.append(f"stale generated file: {name}")
         if differences:
             raise SystemExit("\n".join(differences))
         print("Ralph and Weekly Ralph generated output is current.")
@@ -255,10 +317,12 @@ def main() -> None:
             shutil.copytree(backup, preserved_assets)
     build_weekly_ralph(OUTPUT_DIR, issues)
     build_ralph(RALPH_OUTPUT_DIR, issues, whats_new)
+    (ROOT / "sitemap.xml").write_text(build_sitemap(issues), encoding="utf-8")
+    (ROOT / "robots.txt").write_text(build_robots(), encoding="utf-8")
     print(
         f"Built Ralph landing page, {len(RALPH_SUBPAGES)} subpage(s), "
-        f"{len(whats_new)} What's-new entrie(s), and "
-        f"{len(issues)} Weekly Ralph issue(s)."
+        f"{len(whats_new)} What's-new entrie(s), "
+        f"{len(issues)} Weekly Ralph issue(s), sitemap.xml, and robots.txt."
     )
 
 

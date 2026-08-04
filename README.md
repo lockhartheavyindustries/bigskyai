@@ -34,6 +34,8 @@ The build writes:
 - `weekly-ralph/index.html` — issue archive
 - `weekly-ralph/issues/<slug>/index.html` — permanent issue page
 - `weekly-ralph/feed.xml` — RSS feed
+- `sitemap.xml` and `robots.txt` — regenerated from `SITE_URL` on every
+  build so they can never go stale or point at the wrong domain
 
 Production is served by Vercel (project `bigskyai`, team Big Sky AI) at
 https://bigskyai.ai from the root of `main` — no build step; generated output
