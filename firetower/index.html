@@ -1,0 +1,1594 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Firetower is a Big Sky AI installation: a custom portfolio operating system for a private wealth manager — live risk command, evidence-gated briefings, decision previews, and a governed playbook, on hardware the client owns.">
+  <meta property="og:title" content="Firetower · Big Sky AI">
+  <meta property="og:description" content="Your portfolio has data. This system gives it an operating model. A custom portfolio operating system for a private wealth manager — built, installed, and governed by Big Sky AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lockhartheavyindustries.github.io/bigskyai/firetower/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://lockhartheavyindustries.github.io/bigskyai/firetower/">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/bigsky-favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/bigsky-favicon-192.png">
+  <link rel="apple-touch-icon" href="../assets/bigsky-touch-180.png">
+  <title>Firetower | A custom portfolio operating system from Big Sky AI</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a1114;
+      --panel: #131b1e;
+      --panel-2: #0f1719;
+      --ink: #f2f5f4;
+      --soft-ink: #c0cbc9;
+      --muted: #7f8d8b;
+      --line: rgba(255, 255, 255, 0.09);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --gold: #d7ad57;
+      --gold-bright: #e6c26e;
+      --live: #3987e5;
+      --status-good: #0ca30c;
+      --status-warn: #fab219;
+      --status-serious: #ec835a;
+      --status-critical: #d03b3b;
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --series-3: #199e70;
+      --series-4: #c98500;
+      --paper: #fbf7ee;
+      --paper-ink: #172022;
+      --paper-soft: #455356;
+      --paper-muted: #687477;
+      --paper-line: rgba(23, 32, 34, 0.14);
+      --coral: #c85a35;
+      --mono: "IBM Plex Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(ellipse 60rem 30rem at 85% -5%, rgba(215, 173, 87, 0.07), transparent),
+        radial-gradient(circle at 12px 12px, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 28px 28px,
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* ---------- header ---------- */
+
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      min-height: 68px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    .site-note {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- hero ---------- */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr);
+      gap: 56px;
+      align-items: center;
+      padding: 76px 0 60px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      font-family: var(--mono);
+      color: var(--gold-bright);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 5.4vw, 4.3rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    h1 .dim { color: var(--muted); }
+
+    .hero-copy {
+      max-width: 560px;
+      margin: 22px 0 0;
+      color: var(--soft-ink);
+      font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: #211a0a;
+    }
+
+    .button.secondary {
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink);
+    }
+
+    /* ---------- panels (shared chrome) ---------- */
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel-2);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-family: var(--mono);
+      color: var(--soft-ink);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .panel-body { padding: 16px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .tag.illustrative { color: var(--gold-bright); border-color: rgba(215, 173, 87, 0.35); }
+
+    /* Client dollar amounts are always withheld on showcases; percentages stay. */
+    .blur-usd {
+      filter: blur(0.22em);
+      opacity: 0.9;
+      user-select: none;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .dot { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 999px; }
+    .dot.good { background: var(--status-good); }
+    .dot.warn { background: var(--status-warn); }
+    .dot.serious { background: var(--status-serious); }
+    .dot.critical { background: var(--status-critical); }
+    .dot.live { background: var(--live); }
+
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .dot.pulse { animation: pulse 2.4s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .dot.pulse { animation: none; } }
+
+    /* ---------- hero command center ---------- */
+
+    .cmd .panel-body { padding: 16px 16px 18px; }
+
+    .cmd-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .metric-name {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .cmd-nlv .metric-name { display: block; margin-bottom: 2px; }
+
+    .cmd-nlv strong {
+      font-size: 1.9rem;
+      font-weight: 650;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .zone-meter { position: relative; margin: 16px 0 4px; }
+
+    .zone-track {
+      display: flex;
+      gap: 2px;
+      height: 16px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .zone { position: relative; height: 100%; }
+    .zone.ok     { flex: 0 0 72.9%; background: rgba(12, 163, 12, 0.16); }
+    .zone.watch  { flex: 0 0 9.4%;  background: rgba(250, 178, 25, 0.2); }
+    .zone.reduce { flex: 0 0 5.9%;  background: rgba(236, 131, 90, 0.2); }
+    .zone.action { flex: 1 1 auto;  background: rgba(208, 59, 59, 0.18); }
+
+    .zone-ticks {
+      position: relative;
+      height: 18px;
+      margin-top: 4px;
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      color: var(--muted);
+    }
+
+    .zone-ticks span { position: absolute; top: 0; transform: translateX(-50%); }
+
+    .zone-ticks span::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -22px;
+      width: 1px;
+      height: 18px;
+      background: var(--line-strong);
+    }
+
+    .needle {
+      position: absolute;
+      top: -5px;
+      width: 2px;
+      height: 26px;
+      background: var(--ink);
+      border-radius: 1px;
+    }
+
+    .needle::after {
+      content: attr(data-value);
+      position: absolute;
+      left: 50%;
+      top: -22px;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .ltv-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cmd-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 16px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-stat .label {
+      display: block;
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.63rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .mini-stat .value {
+      margin: 3px 0 0;
+      font-size: 1.22rem;
+      font-weight: 650;
+      line-height: 1.1;
+    }
+
+    .mini-stat .note { margin: 1px 0 0; font-size: 0.72rem; color: var(--muted); }
+    .mini-stat .note.flag { color: var(--status-warn); font-weight: 700; }
+
+    .cmd-spark {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .spark { display: block; }
+
+    /* ---------- trust strip ---------- */
+
+    .trust {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .trust-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 30px;
+      padding: 14px 0;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      color: var(--soft-ink);
+      white-space: nowrap;
+    }
+
+    .trust-inner span::before {
+      content: "✓ ";
+      color: var(--status-good);
+    }
+
+    /* ---------- sections ---------- */
+
+    .page-section { padding: 84px 0 10px; }
+
+    .section-kicker {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      color: var(--gold-bright);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4.4vw, 3.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .section-copy {
+      max-width: 740px;
+      margin: 18px 0 0;
+      color: var(--soft-ink);
+      font-size: clamp(1rem, 1.5vw, 1.16rem);
+    }
+
+    .section-copy strong { color: var(--ink); }
+
+    .pull-line {
+      max-width: 740px;
+      margin: 26px 0 0;
+      padding: 16px 20px;
+      border-left: 3px solid var(--gold);
+      background: rgba(215, 173, 87, 0.05);
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ---------- pillars ---------- */
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .pillar {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+    }
+
+    .pillar .num {
+      font-family: var(--mono);
+      color: var(--gold-bright);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+    }
+
+    .pillar h3 {
+      margin: 10px 0 6px;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .pillar .tagline {
+      margin: 0 0 14px;
+      color: var(--soft-ink);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .pillar ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .pillar li {
+      position: relative;
+      padding-left: 14px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .pillar li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.52em;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ---------- day rail ---------- */
+
+    .day-rail {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .day-stop {
+      position: relative;
+      padding: 18px 18px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-2);
+    }
+
+    .day-stop .time {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      color: var(--gold-bright);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .day-stop h3 { margin: 8px 0 6px; font-size: 1.02rem; letter-spacing: -0.01em; }
+
+    .day-stop p { margin: 0; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+
+    .desk-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .desk-grid .panel { box-shadow: none; }
+
+    .cell-brief { grid-column: span 7; }
+    .cell-sentiment { grid-column: span 5; }
+    .cell-allocation { grid-column: span 5; }
+    .cell-income { grid-column: span 7; }
+    .cell-wide { grid-column: span 12; }
+
+    /* briefing feed */
+    .feed { display: grid; gap: 0; font-size: 0.88rem; }
+
+    .feed-line {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feed-line:last-child { border-bottom: 0; }
+
+    .feed-time {
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.74rem;
+      padding-top: 2px;
+    }
+
+    .feed-text { color: var(--soft-ink); min-width: 0; }
+    .feed-text b { color: var(--ink); }
+
+    .src {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 1px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .gate-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel-2);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .gate-line .ok { color: var(--status-good); }
+    .gate-line .rej { color: var(--status-serious); }
+
+    /* sentiment */
+    .scan-rows { display: grid; gap: 10px; }
+
+    .scan-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel-2);
+      font-size: 0.84rem;
+      color: var(--soft-ink);
+    }
+
+    .scan-row .n {
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+
+    .scan-verdict { margin: 12px 0 0; font-size: 0.84rem; color: var(--soft-ink); }
+
+    /* donut */
+    .donut-wrap { display: flex; align-items: center; gap: 22px; }
+
+    .donut-figure { position: relative; flex: 0 0 auto; }
+
+    .donut-center {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+    }
+
+    .donut-center .big { font-size: 1.6rem; font-weight: 650; line-height: 1; }
+    .donut-center .sub {
+      margin-top: 4px;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .legend { display: grid; gap: 9px; min-width: 0; flex: 1; }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.86rem;
+      color: var(--soft-ink);
+    }
+
+    .legend-row .swatch { flex: 0 0 auto; width: 10px; height: 10px; border-radius: 3px; }
+
+    .legend-row .pct {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .conc-flag {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: var(--soft-ink);
+    }
+
+    /* income calendar */
+    .cal {
+      display: grid;
+      grid-template-columns: repeat(31, 1fr);
+      gap: 3px;
+      margin-top: 6px;
+    }
+
+    .cal span {
+      display: block;
+      aspect-ratio: 1;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cal span.wk { background: rgba(255, 255, 255, 0.02); }
+    .cal span.pay { background: var(--series-1); }
+    .cal span.exdiv { box-shadow: inset 0 0 0 1.5px var(--series-3); background: rgba(25, 158, 112, 0.12); }
+
+    .cal-foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px 16px;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    .cal-foot .key i {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin: 0 5px 0 14px;
+      border-radius: 2px;
+      vertical-align: -1px;
+      font-style: normal;
+    }
+
+    .cal-foot .key i:first-child { margin-left: 0; }
+
+    .cal-note { color: var(--soft-ink); }
+
+    .income-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 16px;
+      margin-bottom: 16px;
+    }
+
+    /* decision support */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.25fr 1fr;
+      gap: 0;
+    }
+
+    .decision-col { padding: 16px 18px; }
+
+    .decision-col + .decision-col { border-left: 1px solid var(--line); }
+
+    .decision-col h4 {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .trade-line {
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .trade-sub { margin: 6px 0 0; font-size: 0.8rem; color: var(--muted); }
+
+    .delta-rows { display: grid; gap: 8px; }
+
+    .delta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: var(--soft-ink);
+    }
+
+    .delta-row .vals {
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.78rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .delta-row .vals .to-warn { color: var(--status-warn); font-weight: 700; }
+    .delta-row .vals .arrow { color: var(--muted); }
+
+    .verdict-box {
+      padding: 12px;
+      border: 1px solid rgba(250, 178, 25, 0.35);
+      border-radius: 8px;
+      background: rgba(250, 178, 25, 0.06);
+    }
+
+    .verdict-box .v-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+
+    .verdict-box p { margin: 8px 0 0; font-size: 0.8rem; color: var(--soft-ink); line-height: 1.5; }
+
+    .approval-note {
+      margin: 12px 0 0;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ---------- modes table ---------- */
+
+    .rules {
+      margin-top: 38px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .rule-row {
+      display: grid;
+      grid-template-columns: 150px 130px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .rule-row:last-child { border-bottom: 0; }
+
+    .rule-range {
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .rule-what { color: var(--soft-ink); font-size: 0.92rem; }
+
+    .rule-row.floor { background: var(--panel-2); }
+
+    /* ---------- case study ---------- */
+
+    .incident {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+      gap: 48px;
+      align-items: start;
+      margin-top: 8px;
+    }
+
+    .log { font-family: var(--mono); font-size: 0.8rem; }
+
+    .log .panel-body { padding: 6px 16px; }
+
+    .log-line {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .log-line:last-child { border-bottom: 0; }
+
+    .log-time { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    .log-msg { color: var(--soft-ink); line-height: 1.5; }
+    .log-msg b { color: var(--ink); font-weight: 700; }
+    .log-msg .lv-warn { color: var(--status-warn); }
+    .log-msg .lv-act { color: var(--status-serious); }
+    .log-msg .lv-red { color: var(--status-critical); }
+    .log-msg .lv-ok { color: var(--status-good); }
+
+    /* ---------- trust architecture ---------- */
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .principle {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+    }
+
+    .principle .num {
+      font-family: var(--mono);
+      color: var(--gold-bright);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+    }
+
+    .principle h3 { margin: 10px 0 8px; font-size: 1.05rem; line-height: 1.25; letter-spacing: -0.01em; }
+
+    .principle p { margin: 0; color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
+
+    /* ---------- installation (light band) ---------- */
+
+    .light-band {
+      margin-top: 96px;
+      padding: 84px 0 90px;
+      background:
+        radial-gradient(ellipse 50rem 22rem at 90% 0%, rgba(215, 173, 87, 0.18), transparent),
+        var(--paper);
+      color: var(--paper-ink);
+    }
+
+    .light-band .section-kicker { color: var(--coral); }
+
+    .light-band .section-copy { color: var(--paper-soft); }
+
+    .light-band .section-copy strong { color: var(--paper-ink); }
+
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 38px;
+    }
+
+    .phase {
+      padding: 24px;
+      border: 1px solid var(--paper-line);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 18px 50px rgba(7, 38, 36, 0.08);
+    }
+
+    .phase .step {
+      font-family: var(--mono);
+      color: var(--coral);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .phase h3 { margin: 10px 0 8px; font-size: 1.15rem; letter-spacing: -0.01em; }
+
+    .phase p { margin: 0; color: var(--paper-soft); font-size: 0.86rem; line-height: 1.55; }
+
+    .outcomes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .outcome-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 8px 14px;
+      border: 1px solid var(--paper-line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--paper-ink);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    /* ---------- CTA ---------- */
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 26px;
+      align-items: center;
+      margin: 90px 0 24px;
+      padding: 38px;
+      border: 1px solid rgba(215, 173, 87, 0.3);
+      border-radius: 12px;
+      background:
+        radial-gradient(ellipse 40rem 16rem at 90% 0%, rgba(215, 173, 87, 0.12), transparent),
+        var(--panel);
+    }
+
+    .cta h2 { font-size: clamp(1.7rem, 3.3vw, 2.7rem); }
+
+    .cta p {
+      max-width: 640px;
+      margin: 14px 0 0;
+      color: var(--soft-ink);
+      font-size: 1.02rem;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+      display: grid;
+      gap: 14px;
+      padding: 26px 0 46px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px 28px;
+    }
+
+    .footer-brand {
+      color: var(--ink);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    footer nav { display: flex; flex-wrap: wrap; gap: 10px 18px; font-weight: 700; }
+    footer nav a { text-decoration: none; }
+    footer nav a:hover, footer nav a:focus-visible { color: var(--gold-bright); }
+
+    .disclaimer { max-width: 900px; line-height: 1.6; }
+
+    /* ---------- responsive ---------- */
+
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 0 48px; }
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+      .day-rail { grid-template-columns: repeat(2, 1fr); }
+      .cell-brief, .cell-sentiment, .cell-allocation, .cell-income { grid-column: span 12; }
+      .decision-grid { grid-template-columns: 1fr; }
+      .decision-col + .decision-col { border-left: 0; border-top: 1px solid var(--line); }
+      .incident { grid-template-columns: 1fr; gap: 32px; }
+      .principles { grid-template-columns: repeat(2, 1fr); }
+      .phase-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      .page-section { padding: 64px 0 10px; }
+      .pillars, .day-rail, .principles { grid-template-columns: 1fr; }
+      .rule-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 16px; }
+      .cta { grid-template-columns: 1fr; padding: 26px 22px; }
+      .button { width: 100%; }
+      .btn-row .button { width: auto; flex: 1 1 auto; }
+      .donut-wrap { flex-direction: column; align-items: flex-start; }
+      .feed-line { grid-template-columns: 1fr; gap: 2px; }
+      .log-line { grid-template-columns: 48px 1fr; }
+      .trust-inner { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .cmd-stats, .income-stats { grid-template-columns: 1fr 1fr; }
+      .cmd-spark { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="../">BIG SKY AI</a>
+    <span class="site-note">Installation · 002</span>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero shell" aria-label="Firetower introduction">
+      <div>
+        <p class="eyebrow">Firetower &middot; Custom portfolio intelligence</p>
+        <h1>Your portfolio has data. <span class="dim">This system gives it an operating model.</span></h1>
+        <p class="hero-copy">A private portfolio operating system, built around a wealth manager&rsquo;s holdings, income objectives, and risk rules. It observes continuously, explains what moved, models decisions before they happen&nbsp;&mdash; and preserves discipline when markets get disorderly.</p>
+        <div class="btn-row">
+          <a class="button primary" href="#pillars">Explore the system</a>
+          <a class="button secondary" href="#day">View a sample briefing</a>
+        </div>
+      </div>
+
+      <div class="panel cmd" aria-label="Illustrative command center snapshot">
+        <div class="panel-head">
+          <h2 class="panel-title" style="font-size:0.72rem">Command center</h2>
+          <span class="tag illustrative">Illustrative data</span>
+        </div>
+        <div class="panel-body">
+          <div class="cmd-top">
+            <span class="status-chip"><span class="dot warn" aria-hidden="true"></span>MODE: YELLOW &middot; WATCH</span>
+            <span class="status-chip"><span class="dot live pulse" aria-hidden="true"></span>LIVE</span>
+          </div>
+
+          <div class="cmd-nlv">
+            <span class="metric-name">Net liquidation value</span>
+            <strong>$<span class="blur-usd" aria-hidden="true">4.13</span>M</strong>
+          </div>
+
+          <div class="ltv-row">
+            <span class="metric-name">Loan-to-value</span>
+          </div>
+          <div class="zone-meter">
+            <div class="zone-track" aria-hidden="true">
+              <span class="zone ok"></span>
+              <span class="zone watch"></span>
+              <span class="zone reduce"></span>
+              <span class="zone action"></span>
+            </div>
+            <span class="needle" style="left: 75.5%;" data-value="64.2%" aria-hidden="true"></span>
+            <div class="zone-ticks" aria-hidden="true">
+              <span style="left: 72.9%;">62</span>
+              <span style="left: 82.3%;">70</span>
+              <span style="left: 88.2%;">75</span>
+            </div>
+          </div>
+
+          <div class="cmd-stats">
+            <div class="mini-stat">
+              <span class="label">Excess liquidity</span>
+              <p class="value">$<span class="blur-usd" aria-hidden="true">583</span>K</p>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Forward income</span>
+              <p class="value">$<span class="blur-usd" aria-hidden="true">39</span>K<span style="font-size:0.85rem; color: var(--muted);">/mo</span></p>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Reinvestment</span>
+              <p class="value">DRIP ON</p>
+              <p class="note">buys gated in YELLOW</p>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Concentration</span>
+              <p class="value">41%</p>
+              <p class="note flag">semis &amp; AI &middot; flagged</p>
+            </div>
+          </div>
+
+          <div class="cmd-spark">
+            <div class="mini-stat">
+              <span class="label">LTV &middot; trailing 12 weeks</span>
+            </div>
+            <svg class="spark" width="170" height="46" viewBox="0 0 170 46" role="img" aria-label="LTV trend sparkline rising from the high fifties toward the low sixties, watch threshold marked">
+              <line x1="4" y1="14" x2="166" y2="14" stroke="#2c3a3e" stroke-width="1"/>
+              <polyline points="4,34 18,32 33,33 48,29 62,30 77,26 91,27 106,23 120,24 135,20 150,18 162,17"
+                        fill="none" stroke="#3987e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="162" cy="17" r="5" fill="#3987e5" stroke="#131b1e" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST STRIP ============ -->
+    <div class="trust" aria-label="Trust strip">
+      <div class="trust-inner shell">
+        <span>LIVE BROKER DATA</span>
+        <span>SOURCE-VERIFIED RESEARCH</span>
+        <span>READ-ONLY BROKER ACCESS</span>
+        <span>HUMAN-CONTROLLED DECISIONS</span>
+        <span>AUDITED AFTER DELIVERY</span>
+      </div>
+    </div>
+
+    <!-- ============ THE CLIENT PROBLEM ============ -->
+    <section class="page-section shell" id="client">
+      <p class="section-kicker">The engagement &middot; Client 002</p>
+      <h2>The data existed. The operating model didn&rsquo;t.</h2>
+      <p class="section-copy">Client 002 is a private wealth manager running a small family office: a leveraged income portfolio with real margin, real distributions, and no research desk behind it&mdash;one person responsible for a family&rsquo;s capital, with obligations that don&rsquo;t pause for market hours.</p>
+      <p class="section-copy">The raw material was all there&nbsp;&mdash; live positions and margin metrics inside the brokerage, distribution announcements scattered across issuer sites, market catalysts across news and social feeds, and the house rules living in documents and memory. Six sources of truth, <strong>zero shared clock</strong>. Every volatile morning meant manual math under pressure.</p>
+      <p class="pull-line">Firetower turns fragmented brokerage data into a governed portfolio operating system.</p>
+      <p class="section-copy">Every figure on this page is illustrative&nbsp;&mdash; the shape is real, the dollars are not.</p>
+    </section>
+
+    <!-- ============ FOUR PILLARS ============ -->
+    <section class="page-section shell" id="pillars">
+      <p class="section-kicker">The operating model</p>
+      <h2>Observe. Interpret. Plan. Govern.</h2>
+      <p class="section-copy">Four capabilities, one governed workflow. Ordinary broker tools stop at the first.</p>
+
+      <div class="pillars">
+        <article class="pillar">
+          <span class="num">01</span>
+          <h3>Observe</h3>
+          <p class="tagline">One live portfolio truth.</p>
+          <ul>
+            <li>Live account, holding, P&amp;L, and margin data across taxable and retirement views</li>
+            <li>Quote freshness, cache age, and stale-source detection on every tile</li>
+            <li>Concentration, leverage, and risk-band history</li>
+            <li>Web dashboard on the client&rsquo;s private network, plus chat delivery</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <span class="num">02</span>
+          <h3>Interpret</h3>
+          <p class="tagline">Explain what actually moved.</p>
+          <ul>
+            <li>Pre-market, midday, and closing briefings&nbsp;&mdash; portfolio-specific, not generic news</li>
+            <li>Verified catalysts for unusual holding moves; every claim carries a source</li>
+            <li>Macro, rates, volatility, and sector context read through this portfolio</li>
+            <li>Explicit degradation when research is unavailable&nbsp;&mdash; never silent</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <span class="num">03</span>
+          <h3>Plan</h3>
+          <p class="tagline">Model the decision before making it.</p>
+          <ul>
+            <li>Broker-backed margin previews for proposed buys, sales, and withdrawals</li>
+            <li>Post-trade LTV and excess-liquidity estimates, with solver-computed safe ceilings</li>
+            <li>Income gained or sacrificed by any proposed change</li>
+            <li>Further &minus;10% and &minus;20% stress scenarios on demand</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <span class="num">04</span>
+          <h3>Govern</h3>
+          <p class="tagline">Keep the strategy intact under pressure.</p>
+          <ul>
+            <li>Green / Yellow / Orange / Red operating modes with explicit rules per mode</li>
+            <li>DRIP, buying, withdrawal, and deleveraging behavior gated by mode</li>
+            <li>Concentration overrides and distribution-cut monitoring</li>
+            <li>Data-source health checks, post-report audits, human approval for every action</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ A DAY IN THE SYSTEM ============ -->
+    <section class="page-section shell" id="day">
+      <p class="section-kicker">A day in the system</p>
+      <h2>Continuous, not a dashboard you have to remember.</h2>
+
+      <div class="day-rail">
+        <article class="day-stop">
+          <span class="time">07:00 MT</span>
+          <h3>Pre-market brief</h3>
+          <p>Overnight futures and global context, portfolio risk condition, distribution outlook, verified catalyst calendar.</p>
+        </article>
+        <article class="day-stop">
+          <span class="time">12:00 MT</span>
+          <h3>Midday pulse</h3>
+          <p>Live movement, verified holding and sector drivers, updated LTV and liquidity, material changes since morning.</p>
+        </article>
+        <article class="day-stop">
+          <span class="time">15:00 MT</span>
+          <h3>Close wrap</h3>
+          <p>Final performance, income engine and upcoming ex-dates, day-in-review narrative, next session&rsquo;s watch list.</p>
+        </article>
+        <article class="day-stop">
+          <span class="time">ANYTIME</span>
+          <h3>On-demand pulse</h3>
+          <p>Session-aware: knows regular hours from after-hours, overnight futures, weekends, and holidays&nbsp;&mdash; and answers accordingly.</p>
+        </article>
+      </div>
+
+      <div class="desk-grid">
+        <div class="panel cell-brief">
+          <div class="panel-head">
+            <h3 class="panel-title">Sample &middot; pre-market briefing &middot; 07:00 MT</h3>
+            <span class="tag illustrative">Illustrative</span>
+          </div>
+          <div class="panel-body">
+            <div class="feed">
+              <div class="feed-line">
+                <span class="feed-time">OVERNIGHT</span>
+                <span class="feed-text">Semis soft premarket on export-license headlines; sector ETF <b>&minus;2.1%</b>.<span class="src">source: reuters.com</span></span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">RATES</span>
+                <span class="feed-text">10Y at <b>4.31%</b> (&minus;4bp); no change to the income-sleeve outlook.<span class="src">source: cnbc.com</span></span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">PORTFOLIO</span>
+                <span class="feed-text">LTV opens <b>64.2%</b> &middot; MODE YELLOW. Excess liquidity <b>$<span class="blur-usd" aria-hidden="true">583</span>K</b>. No mode line crossed overnight.</span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">INCOME</span>
+                <span class="feed-text">Two pay dates this week; estimated deposits on track vs plan.</span>
+              </div>
+            </div>
+            <div class="gate-line">
+              <span>evidence gate: <span class="ok">5 claims admitted</span> &middot; <span class="rej">1 rejected (no source)</span></span>
+              <span>post-run audit: format <span class="ok">&#10003;</span> tickers&harr;amounts <span class="ok">&#10003;</span> catalyst evidence <span class="ok">&#10003;</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel cell-sentiment">
+          <div class="panel-head">
+            <h3 class="panel-title">Sentiment sweep &middot; 11:30 MT</h3>
+            <span class="tag illustrative">Illustrative</span>
+          </div>
+          <div class="panel-body">
+            <div class="scan-rows">
+              <div class="scan-row"><span>Posts &amp; articles scanned</span><span class="n">41</span></div>
+              <div class="scan-row"><span>Catalysts admitted (sourced)</span><span class="n">2</span></div>
+              <div class="scan-row"><span>Rumors rejected at the gate</span><span class="n">3</span></div>
+            </div>
+            <p class="scan-verdict">&ldquo;No catalyst&rdquo; is a claim too&nbsp;&mdash; the audit demands evidence in <em>both</em> directions, so silence is never just a shrug.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSIDE THE COCKPIT ============ -->
+    <section class="page-section shell" id="cockpit">
+      <p class="section-kicker">Inside the cockpit</p>
+      <h2>Real screens, not stock photography.</h2>
+      <p class="section-copy">Recreations of the client&rsquo;s actual dashboard tiles, with the numbers swapped. Margin health lives in the command center above; here&rsquo;s exposure, income, and the decision-support layer.</p>
+
+      <div class="desk-grid">
+        <div class="panel cell-allocation">
+          <div class="panel-head">
+            <h3 class="panel-title">Portfolio exposure</h3>
+            <span class="tag">as of 07:00 MT</span>
+          </div>
+          <div class="panel-body">
+            <div class="donut-wrap">
+              <div class="donut-figure">
+                <svg width="150" height="150" viewBox="0 0 150 150" role="img" aria-label="Allocation donut: covered-call income 34%, semis and tech 28%, dividend equities 23%, treasuries and cash 15%">
+                  <g transform="rotate(-90 75 75)">
+                    <circle cx="75" cy="75" r="58" fill="none" stroke="#3987e5" stroke-width="17"
+                            stroke-dasharray="120.9 243.5" stroke-dashoffset="0"/>
+                    <circle cx="75" cy="75" r="58" fill="none" stroke="#d95926" stroke-width="17"
+                            stroke-dasharray="99.0 265.4" stroke-dashoffset="-123.9"/>
+                    <circle cx="75" cy="75" r="58" fill="none" stroke="#199e70" stroke-width="17"
+                            stroke-dasharray="80.8 283.6" stroke-dashoffset="-225.9"/>
+                    <circle cx="75" cy="75" r="58" fill="none" stroke="#c98500" stroke-width="17"
+                            stroke-dasharray="51.7 312.7" stroke-dashoffset="-309.7"/>
+                  </g>
+                </svg>
+                <div class="donut-center">
+                  <span class="big">8.9%</span>
+                  <span class="sub">blended yield</span>
+                </div>
+              </div>
+              <div class="legend" aria-hidden="true">
+                <div class="legend-row"><span class="swatch" style="background:#3987e5"></span>Covered-call income<span class="pct">34%</span></div>
+                <div class="legend-row"><span class="swatch" style="background:#d95926"></span>Semis &amp; tech<span class="pct">28%</span></div>
+                <div class="legend-row"><span class="swatch" style="background:#199e70"></span>Dividend equities<span class="pct">23%</span></div>
+                <div class="legend-row"><span class="swatch" style="background:#c98500"></span>Treasuries &amp; cash<span class="pct">15%</span></div>
+              </div>
+            </div>
+            <div class="conc-flag">
+              <span class="status-chip"><span class="dot warn" aria-hidden="true"></span>OVERRIDE</span>
+              <span>Semiconductor + AI overlap tracked at <b>41%</b> across sleeves&nbsp;&mdash; concentration rule active.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel cell-income">
+          <div class="panel-head">
+            <h3 class="panel-title">Income engine &middot; July</h3>
+            <span class="tag">est &amp; confirmed</span>
+          </div>
+          <div class="panel-body">
+            <div class="income-stats">
+              <div class="mini-stat">
+                <span class="label">Forward income</span>
+                <p class="value">$<span class="blur-usd" aria-hidden="true">39</span>K<span style="font-size:0.85rem; color: var(--muted);">/mo</span></p>
+              </div>
+              <div class="mini-stat">
+                <span class="label">Next 30 days</span>
+                <p class="value">6 <span style="font-size:0.85rem; color: var(--muted);">events</span></p>
+              </div>
+            </div>
+            <div class="cal" aria-label="July income calendar: ex-dividend dates on the 8th and 24th, pay dates on the 15th and 31st">
+              <span class="wk"></span><span></span><span></span><span></span><span class="wk"></span><span class="wk"></span><span></span>
+              <span class="exdiv"></span><span></span><span></span><span class="wk"></span><span class="wk"></span><span></span><span></span>
+              <span class="pay"></span><span></span><span></span><span class="wk"></span><span class="wk"></span><span></span><span></span>
+              <span></span><span></span><span class="exdiv"></span><span class="wk"></span><span class="wk"></span><span></span><span></span>
+              <span></span><span></span><span class="pay"></span>
+            </div>
+            <div class="cal-foot">
+              <span class="key"><i style="background:#3987e5"></i>Pay date<i style="box-shadow: inset 0 0 0 1.5px #199e70; background:rgba(25,158,112,0.12)"></i>Ex-div<i style="background:rgba(255,255,255,0.05)"></i>Trading day</span>
+              <span class="cal-note">Jul 31 &middot; est. deposit <b>$<span class="blur-usd" aria-hidden="true">41</span>K</b></span>
+            </div>
+            <div class="gate-line" style="margin-top:16px">
+              <span>confirmed from issuer or press release <span class="ok">&#10003;</span></span>
+              <span>estimates never overwrite confirmed <span class="ok">&#10003;</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel cell-wide">
+          <div class="panel-head">
+            <h3 class="panel-title">Decision support &middot; trade preview</h3>
+            <span class="tag illustrative">Illustrative</span>
+          </div>
+          <div class="decision-grid">
+            <div class="decision-col">
+              <h4>Proposed</h4>
+              <p class="trade-line">BUY &middot; $<span class="blur-usd" aria-hidden="true">250</span>K &middot; covered-call fund</p>
+              <p class="trade-sub">Modeled against live broker margin data. Preview only&nbsp;&mdash; nothing is submitted.</p>
+            </div>
+            <div class="decision-col">
+              <h4>Post-trade preview</h4>
+              <div class="delta-rows">
+                <div class="delta-row"><span>Loan-to-value</span><span class="vals">64.2% <span class="arrow">&rarr;</span> <span class="to-warn">65.6%</span></span></div>
+                <div class="delta-row"><span>Excess liquidity</span><span class="vals">$<span class="blur-usd" aria-hidden="true">583</span>K <span class="arrow">&rarr;</span> $<span class="blur-usd" aria-hidden="true">521</span>K</span></div>
+                <div class="delta-row"><span>Forward income</span><span class="vals">+$<span class="blur-usd" aria-hidden="true">2.1</span>K/mo</span></div>
+                <div class="delta-row"><span>Stressed &minus;10%</span><span class="vals">LTV <span class="to-warn">72.9%</span> &middot; mode ORANGE</span></div>
+              </div>
+            </div>
+            <div class="decision-col">
+              <h4>Advisory</h4>
+              <div class="verdict-box">
+                <span class="v-head"><span class="dot warn" aria-hidden="true"></span>HOLD &middot; EXCEEDS CEILING</span>
+                <p>YELLOW mode caps new buys at the solver ceiling&nbsp;&mdash; <b style="color: var(--ink)">$<span class="blur-usd" aria-hidden="true">98</span>K</b> today. This add survives the base case but breaches ORANGE under a &minus;10% stress.</p>
+              </div>
+              <p class="approval-note">Advisory only &middot; human approval required for all actions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OPERATING MODES ============ -->
+    <section class="page-section shell" id="modes">
+      <p class="section-kicker">The governed playbook</p>
+      <h2>Four operating modes. Written once, enforced everywhere.</h2>
+      <p class="section-copy">The client&rsquo;s rules, moved <strong>out of their head and into one tested definition</strong>&nbsp;&mdash; thresholds, modes, and a hard dollar floor. The same definition renders the dashboard, constrains the what-if solver, shapes briefing language, and wakes the watchdog. Two languages, one source: nothing on the desk can disagree about risk.</p>
+
+      <div class="rules" role="table" aria-label="Illustrative operating modes">
+        <div class="rule-row" role="row">
+          <span class="rule-range" role="cell">LTV &lt; 62%</span>
+          <span class="status-chip" role="cell"><span class="dot good" aria-hidden="true"></span>GREEN</span>
+          <span class="rule-what" role="cell">Operate within plan. Reinvestment runs, buys allowed, withdrawals per schedule.</span>
+        </div>
+        <div class="rule-row" role="row">
+          <span class="rule-range" role="cell">62 &ndash; 70%</span>
+          <span class="status-chip" role="cell"><span class="dot warn" aria-hidden="true"></span>YELLOW</span>
+          <span class="rule-what" role="cell">New buys gated by the solver ceiling. Every briefing names the mode. Watchdog cadence tightens.</span>
+        </div>
+        <div class="rule-row" role="row">
+          <span class="rule-range" role="cell">70 &ndash; 75%</span>
+          <span class="status-chip" role="cell"><span class="dot serious" aria-hidden="true"></span>ORANGE</span>
+          <span class="rule-what" role="cell">Pre-planned de-risking steps surface, sized and ranked. Withdrawal capacity re-modeled daily.</span>
+        </div>
+        <div class="rule-row" role="row">
+          <span class="rule-range" role="cell">LTV &gt; 75%</span>
+          <span class="status-chip" role="cell"><span class="dot critical" aria-hidden="true"></span>RED</span>
+          <span class="rule-what" role="cell">Reinvestment off, buys off. Alerts escalate until the client acts or stands down explicitly.</span>
+        </div>
+        <div class="rule-row floor" role="row">
+          <span class="rule-range" role="cell">Cushion floor</span>
+          <span class="status-chip" role="cell"><span class="dot critical" aria-hidden="true"></span>HARD&nbsp;$</span>
+          <span class="rule-what" role="cell">A dollar line that triggers regardless of ratios&nbsp;&mdash; because percentages feel abstract and dollars don&rsquo;t.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDY ============ -->
+    <section class="page-section shell" id="incident">
+      <div class="incident">
+        <div>
+          <p class="section-kicker">Case study &middot; a high-volatility session</p>
+          <h2>Rotation, not crash.</h2>
+          <p class="section-copy">Semiconductors fell nearly 5% while the broad market finished positive&nbsp;&mdash; and the portfolio&rsquo;s concentrated AI exposure amplified the day into its largest drawdown of the quarter. The exact scenario the playbook was written for.</p>
+          <p class="section-copy">The system identified a <strong>sector rotation, not a systemic crash</strong>, quantified what leverage did to net liquidation value, and tracked excess liquidity from the morning low through the afternoon recovery. When the bounce came, governance held: <strong>a recovery is not new buying capacity.</strong> The client made one pre-planned move, on time, with the evidence attached&nbsp;&mdash; and next-morning acceptance checks reconciled every share count and balance against broker records.</p>
+        </div>
+        <div class="panel log">
+          <div class="panel-head">
+            <h3 class="panel-title">Session log &middot; anonymized</h3>
+            <span class="tag">times MT</span>
+          </div>
+          <div class="panel-body">
+            <div class="log-line"><span class="log-time">06:35</span><span class="log-msg">Research sweep flags sector-wide semiconductor washout. Sources attached.</span></div>
+            <div class="log-line"><span class="log-time">07:00</span><span class="log-msg">Pre-market brief: mode <span class="lv-warn">YELLOW</span> &middot; washout named &middot; playbook discipline restated.</span></div>
+            <div class="log-line"><span class="log-time">11:58</span><span class="log-msg">Midday analysis: drawdown deepening &middot; <b>trigger threshold crossed</b> &middot; verdict: rotation, not crash.</span></div>
+            <div class="log-line"><span class="log-time">12:00</span><span class="log-msg">Midday brief: mode <span class="lv-red">RED</span> &middot; pre-planned step presented: pause reinvestment.</span></div>
+            <div class="log-line"><span class="log-time">12:04</span><span class="log-msg"><b>Client executes.</b> One switch, four minutes after the brief.</span></div>
+            <div class="log-line"><span class="log-time">14:40</span><span class="log-msg">Afternoon recovery tracked. Posture held: <span class="lv-act">recovery &ne; buying capacity</span>.</span></div>
+            <div class="log-line"><span class="log-time">+1 day</span><span class="log-msg">Acceptance checks <span class="lv-ok">GREEN</span>: share counts, loan balance, statements reconciled. Next catalysts queued: distributions, Fed decision, AI-capex earnings.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST ARCHITECTURE ============ -->
+    <section class="page-section shell" id="trust">
+      <p class="section-kicker">Trust architecture</p>
+      <h2>Trust is a feature, not fine print.</h2>
+      <div class="principles">
+        <article class="principle">
+          <span class="num">T&mdash;1</span>
+          <h3>Freshness</h3>
+          <p>Every endpoint carries a timestamp and cache age. Stale data is labeled stale. A source failure cannot silently masquerade as a live value.</p>
+        </article>
+        <article class="principle">
+          <span class="num">T&mdash;2</span>
+          <h3>Provenance</h3>
+          <p>Distributions confirm from issuers or press releases. Market claims carry sources. Broker-reported risk stays separate from modeled interpretation.</p>
+        </article>
+        <article class="principle">
+          <span class="num">T&mdash;3</span>
+          <h3>Deterministic delivery</h3>
+          <p>Core reports never depend on a model completing. Research degrades independently without blocking the facts. Every scheduled report is audited after delivery.</p>
+        </article>
+        <article class="principle">
+          <span class="num">T&mdash;4</span>
+          <h3>Human control</h3>
+          <p>Broker access is read-only. Previews never submit orders. AI researches; it doesn&rsquo;t get to assert or act. Material actions require explicit approval.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ INSTALLATION (light band) ============ -->
+    <section class="light-band" id="installation">
+      <div class="shell">
+        <p class="section-kicker">A consulting installation, not a subscription</p>
+        <h2>Built around how you actually operate.</h2>
+        <p class="section-copy">Every installation begins with your accounts, holdings, leverage structure, income objectives, decision rules, and how you like to be told things. The software is the artifact; <strong>the operating model is the product.</strong></p>
+
+        <div class="phase-grid">
+          <article class="phase">
+            <span class="step">PHASE 01</span>
+            <h3>Discovery</h3>
+            <p>Accounts and custodians, portfolio construction, income and withdrawal objectives, leverage structure, and the operating rules you already half-follow&nbsp;&mdash; written down at last.</p>
+          </article>
+          <article class="phase">
+            <span class="step">PHASE 02</span>
+            <h3>Installation</h3>
+            <p>Brokerage integration, your custom risk model, distribution intelligence, dashboards on your own hardware, scheduled and on-demand reporting, alerts and audits.</p>
+          </article>
+          <article class="phase">
+            <span class="step">PHASE 03</span>
+            <h3>Governance</h3>
+            <p>Decision playbooks, human-authorization boundaries, source and freshness policies, change control, and ongoing system health&nbsp;&mdash; documented so it outlives any one tool.</p>
+          </article>
+        </div>
+
+        <div class="outcomes" aria-label="Client outcomes">
+          <span class="outcome-pill">Fewer blind spots</span>
+          <span class="outcome-pill">Faster response in volatile markets</span>
+          <span class="outcome-pill">Rules applied consistently</span>
+          <span class="outcome-pill">Income, leverage &amp; withdrawals aligned</span>
+          <span class="outcome-pill">A durable record of every decision</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="shell">
+      <div class="cta">
+        <div>
+          <h2>Not another portfolio app. A system built around how the client actually operates.</h2>
+          <p>Firetower is a reference installation. Big Sky AI takes on a small number of private builds like it&nbsp;&mdash; for portfolios, and for businesses that run on the same discipline.</p>
+        </div>
+        <div style="display: grid; gap: 10px;">
+          <a class="button primary" href="mailto:info@lockhartheavyindustries.com?subject=Firetower%20%E2%80%94%20private%20build%20inquiry">Start the conversation</a>
+          <a class="button secondary" href="../">More from Big Sky AI</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-row shell">
+      <a class="footer-brand" href="../">BIG SKY AI</a>
+      <nav aria-label="Footer">
+        <a href="../ralph/">Ralph</a>
+        <a href="../strummer/">Strummer</a>
+        <a href="../powbot/">PowBot</a>
+        <a href="mailto:info@lockhartheavyindustries.com">Contact</a>
+        <a href="#top">Back to top</a>
+      </nav>
+    </div>
+    <div class="shell">
+      <p class="disclaimer">Firetower is a Big Sky AI client-engagement showcase. All portfolio figures, dates, and account values on this page are illustrative, not live client data. The system described maintains read-only brokerage access; it does not execute trades. Nothing here is investment advice, an investment recommendation, or a solicitation to trade. Big Sky AI is not affiliated with or endorsed by any brokerage.</p>
+    </div>
+  </footer>
+
+  <script data-goatcounter="https://bigskyai.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

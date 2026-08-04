@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -9,7 +10,12 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_DIRS = (ROOT / "ralph", ROOT / "weekly-ralph")
-STATIC_PAGES = (ROOT / "index.html", ROOT / "strummer" / "index.html")
+STATIC_PAGES = (
+    ROOT / "index.html",
+    ROOT / "strummer" / "index.html",
+    ROOT / "powbot" / "index.html",
+    ROOT / "firetower" / "index.html",
+)
 GOATCOUNTER_MARKER = (
     'data-goatcounter="https://bigskyai.goatcounter.com/count"'
 )
@@ -74,20 +80,20 @@ def main() -> None:
                 "GoatCounter beacon"
             )
 
-    for path in html_files:
+    for path in tracked_pages:
         text = path.read_text(encoding="utf-8")
         for private_value in DENYLIST:
             if private_value.lower() in text.lower():
                 errors.append(f"{path.relative_to(ROOT)} contains private value: {private_value}")
 
         required = (
-            '<meta name="description"',
-            '<meta property="og:title"',
-            '<link rel="canonical"',
+            ('<meta name="description"', r'<meta\s+name="description"'),
+            ('<meta property="og:title"', r'<meta\s+property="og:title"'),
+            ('<link rel="canonical"', r'<link\s+rel="canonical"'),
         )
-        for marker in required:
-            if marker not in text:
-                errors.append(f"{path.relative_to(ROOT)} missing {marker}")
+        for label, pattern in required:
+            if not re.search(pattern, text):
+                errors.append(f"{path.relative_to(ROOT)} missing {label}")
         if "&lt;p&gt;" in text:
             errors.append(
                 f"{path.relative_to(ROOT)} contains escaped Markdown HTML"
@@ -105,8 +111,9 @@ def main() -> None:
     if errors:
         raise SystemExit("\n".join(errors))
     print(
-        f"Checked {len(html_files)} Ralph and Weekly Ralph HTML pages "
-        f"and analytics coverage on {len(tracked_pages)} public pages."
+        f"Checked {len(tracked_pages)} public pages "
+        f"({len(html_files)} generated) for links, privacy, meta, "
+        "and analytics coverage."
     )
 
 
