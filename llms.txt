@@ -1,0 +1,26 @@
+# Big Sky AI
+
+> Practical AI consulting from Bozeman, Montana. Big Sky AI builds and cares for AI systems for small businesses and families — workflow audits, fixed-scope builds, and ongoing care — with every project documented in public. Tagline: "AI that shows its work."
+
+Founder: Brian Lockhart (three decades of production systems: Xbox Live, Forza at Turn 10, Tableau product security through the IPO, Core Scientific from bankruptcy to NASDAQ relisting). Contact: info@bigskyai.ai
+
+## Client installations
+
+- [Ralph](https://bigskyai.ai/ralph/): Installation 001 — a private family AI assistant for a friends-and-family group. No app, no account; members just text him.
+- [How Ralph works](https://bigskyai.ai/ralph/how-it-works/): plain-English tour of the whole machine, including the full model roster and house rules.
+- [Firetower](https://bigskyai.ai/firetower/): Installation 002 — an AI portfolio operating system for a private wealth manager's family office. Live risk command, evidence-gated briefings, decision previews, governed playbook, on hardware the client owns.
+
+## Product concepts
+
+- [Strummer](https://bigskyai.ai/strummer/): camera-guided guitar coach for absolute beginners.
+- [PowBot](https://bigskyai.ai/powbot/): evidence-backed morning ski decision brief for Bridger Bowl and Big Sky.
+
+## Publications
+
+- [The Weekly Ralph](https://bigskyai.ai/weekly-ralph/): real, anonymized stories of people putting a private AI assistant to work. RSS: https://bigskyai.ai/weekly-ralph/feed.xml
+- [What's new with Ralph](https://bigskyai.ai/ralph/whats-new/): running changelog.
+
+## Company
+
+- [About](https://bigskyai.ai/about/): Brian Lockhart's background and the team (one human, one AI staff).
+- Site source is public: https://github.com/lockhartheavyindustries/bigskyai
