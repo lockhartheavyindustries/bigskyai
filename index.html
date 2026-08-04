@@ -10,6 +10,7 @@
   <meta property="og:url" content="https://lockhartheavyindustries.github.io/bigskyai/">
   <meta property="og:image" content="https://lockhartheavyindustries.github.io/bigskyai/assets/bigskyai-og.png">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://lockhartheavyindustries.github.io/bigskyai/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/bigsky-favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/bigsky-favicon-192.png">
   <link rel="apple-touch-icon" href="assets/bigsky-touch-180.png">
@@ -118,7 +119,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
-      padding-bottom: 96px;
+      padding-bottom: 20px;
     }
 
     .project {
@@ -214,6 +215,63 @@
       padding-bottom: 42px;
     }
 
+    .project.firetower {
+      grid-column: 1 / -1;
+      min-height: 280px;
+      padding-bottom: 78px;
+      background:
+        radial-gradient(ellipse 44rem 20rem at 88% 0%, rgba(215, 173, 87, 0.14), transparent),
+        radial-gradient(circle at 12px 12px, rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 26px 26px,
+        #0a1114;
+      color: var(--white);
+    }
+
+    .project.firetower::after {
+      content: "001";
+      position: absolute;
+      right: 18px;
+      bottom: -0.24em;
+      color: rgba(215, 173, 87, 0.08);
+      font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+      font-size: clamp(8rem, 22vw, 15rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .firetower .project-kicker { color: var(--gold); }
+
+    .firetower .project-copy { color: rgba(255, 255, 255, 0.72); }
+
+    .ft-band {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      display: flex;
+      gap: 2px;
+      height: 7px;
+    }
+
+    .ft-band i {
+      height: 100%;
+    }
+
+    .ft-band .b-ok { flex: 0 0 72%; background: rgba(22, 190, 22, 0.55); }
+    .ft-band .b-watch { flex: 0 0 10%; background: rgba(250, 178, 25, 0.6); }
+    .ft-band .b-reduce { flex: 0 0 6%; background: rgba(236, 131, 90, 0.6); }
+    .ft-band .b-action { flex: 1 1 auto; background: rgba(208, 59, 59, 0.55); }
+
+    .ft-band .b-needle {
+      position: absolute;
+      left: 75%;
+      top: -3px;
+      width: 2px;
+      height: 13px;
+      background: var(--white);
+    }
+
     .project-kicker,
     .project-title,
     .project-copy,
@@ -263,6 +321,66 @@
       font-weight: 900;
     }
 
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      margin: 0 0 96px;
+      padding: 38px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(120deg, rgba(215, 173, 87, 0.18), transparent 55%),
+        var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-kicker {
+      margin: 0 0 14px;
+      color: var(--teal-dark);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .contact h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .contact-copy {
+      max-width: 640px;
+      margin: 14px 0 0;
+      color: var(--soft-ink);
+      font-size: 1.05rem;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      background: var(--teal-dark);
+      color: var(--white);
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 12px 34px rgba(7, 77, 74, 0.28);
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .contact-button:hover,
+    .contact-button:focus-visible {
+      background: var(--teal);
+      transform: translateY(-2px);
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -295,6 +413,10 @@
       .hero {
         gap: 28px;
         padding: 72px 0 58px;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
       }
 
       footer {
@@ -348,6 +470,15 @@
         left: 26px;
         bottom: 24px;
       }
+
+      .contact {
+        margin-bottom: 72px;
+        padding: 26px 22px;
+      }
+
+      .contact-button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -395,6 +526,23 @@
         <span class="project-link">See the concept →</span>
       </a>
 
+      <a class="project firetower" href="firetower/">
+        <p class="project-kicker">Client engagement</p>
+        <h2 class="project-title">Firetower</h2>
+        <p class="project-copy">A custom portfolio operating system built for one investor&mdash;live risk command, evidence-gated briefings, decision previews, and a governed playbook, running on hardware the client owns.</p>
+        <span class="project-link">Read the engagement →</span>
+        <span class="ft-band" aria-hidden="true"><i class="b-ok"></i><i class="b-watch"></i><i class="b-reduce"></i><i class="b-action"></i><i class="b-needle"></i></span>
+      </a>
+
+    </section>
+
+    <section class="contact" aria-label="Work with Big Sky AI">
+      <div>
+        <p class="contact-kicker">Work with Big Sky AI</p>
+        <h2>Got an oddly specific problem of your own?</h2>
+        <p class="contact-copy">Everything on this page runs for real people, every day&mdash;built and cared for in Montana. If one of these projects made you think of your business, or your family, start the conversation.</p>
+      </div>
+      <a class="contact-button" href="mailto:info@lockhartheavyindustries.com?subject=Big%20Sky%20AI%20inquiry">info@lockhartheavyindustries.com</a>
     </section>
   </main>
 
@@ -404,6 +552,8 @@
       <a href="ralph/">Ralph</a>
       <a href="strummer/">Strummer</a>
       <a href="powbot/">PowBot</a>
+      <a href="firetower/">Firetower</a>
+      <a href="mailto:info@lockhartheavyindustries.com">Contact</a>
     </nav>
     <span>Big Sky AI · Montana</span>
   </footer>
