@@ -143,6 +143,7 @@
 
     .project.ralph {
       display: grid;
+      grid-column: 1 / -1;
       grid-template-columns: minmax(0, 1fr) clamp(130px, 36%, 210px);
       gap: 24px;
       align-items: center;
@@ -194,25 +195,23 @@
     .project.powbot {
       display: flex;
       min-height: 420px;
-      grid-column: 1 / -1;
-      align-items: center;
+      align-items: flex-end;
       color: var(--white);
       background:
         linear-gradient(
-          90deg,
-          rgba(5, 20, 16, 0.96) 0%,
-          rgba(5, 20, 16, 0.84) 42%,
-          rgba(5, 20, 16, 0.28) 74%,
-          rgba(5, 20, 16, 0.08) 100%
+          180deg,
+          rgba(5, 20, 16, 0.3) 0%,
+          rgba(5, 20, 16, 0.72) 52%,
+          rgba(5, 20, 16, 0.98) 100%
         ),
-        url("powbot/assets/powbot-bluebird-hero.jpg") center / cover no-repeat;
+        url("powbot/assets/powbot-bluebird-hero.jpg") 68% center / cover no-repeat;
     }
 
     .powbot-body {
       position: relative;
       z-index: 1;
-      width: min(54%, 620px);
-      padding-bottom: 42px;
+      width: 100%;
+      padding-bottom: 46px;
     }
 
     .project.firetower {
@@ -450,20 +449,6 @@
 
       .project.powbot {
         min-height: 440px;
-        align-items: flex-end;
-        background:
-          linear-gradient(
-            180deg,
-            rgba(5, 20, 16, 0.3) 0%,
-            rgba(5, 20, 16, 0.72) 52%,
-            rgba(5, 20, 16, 0.98) 100%
-          ),
-          url("powbot/assets/powbot-bluebird-hero.jpg") 68% center / cover no-repeat;
-      }
-
-      .powbot-body {
-        width: 100%;
-        padding-bottom: 46px;
       }
 
       .project-link {
@@ -485,7 +470,7 @@
 <body>
   <header>
     <a class="wordmark" href="./">BIG SKY AI</a>
-    <span class="header-note">Experiments from Montana</span>
+    <span class="header-note">AI that shows its work.</span>
   </header>
 
   <main>
@@ -510,6 +495,14 @@
         <span class="project-link">Meet Ralph →</span>
       </a>
 
+      <a class="project firetower" href="firetower/">
+        <p class="project-kicker">Client engagement</p>
+        <h2 class="project-title">Firetower</h2>
+        <p class="project-copy">A custom portfolio operating system built for a private wealth manager&mdash;live risk command, evidence-gated briefings, decision previews, and a governed playbook, running on hardware the client owns.</p>
+        <span class="project-link">Read the engagement →</span>
+        <span class="ft-band" aria-hidden="true"><i class="b-ok"></i><i class="b-watch"></i><i class="b-reduce"></i><i class="b-action"></i><i class="b-needle"></i></span>
+      </a>
+
       <a class="project strummer" href="strummer/">
         <p class="project-kicker">Product concept</p>
         <h2 class="project-title">Strummer</h2>
@@ -524,14 +517,6 @@
           <p class="project-copy">How&rsquo;s the snow? PowBot knows. A fast, evidence-backed answer for Bridger Bowl and Big Sky before you leave home.</p>
         </div>
         <span class="project-link">See the concept →</span>
-      </a>
-
-      <a class="project firetower" href="firetower/">
-        <p class="project-kicker">Client engagement</p>
-        <h2 class="project-title">Firetower</h2>
-        <p class="project-copy">A custom portfolio operating system built for a private wealth manager&mdash;live risk command, evidence-gated briefings, decision previews, and a governed playbook, running on hardware the client owns.</p>
-        <span class="project-link">Read the engagement →</span>
-        <span class="ft-band" aria-hidden="true"><i class="b-ok"></i><i class="b-watch"></i><i class="b-reduce"></i><i class="b-action"></i><i class="b-needle"></i></span>
       </a>
 
     </section>
@@ -550,12 +535,12 @@
     <a class="wordmark" href="./">BIG SKY AI</a>
     <nav aria-label="Footer">
       <a href="ralph/">Ralph</a>
+      <a href="firetower/">Firetower</a>
       <a href="strummer/">Strummer</a>
       <a href="powbot/">PowBot</a>
-      <a href="firetower/">Firetower</a>
       <a href="mailto:info@lockhartheavyindustries.com">Contact</a>
     </nav>
-    <span>Big Sky AI · Montana</span>
+    <span>Big Sky AI · Bozeman, Montana</span>
   </footer>
 
   <script data-goatcounter="https://bigskyai.goatcounter.com/count"
