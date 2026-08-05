@@ -564,6 +564,24 @@
 
     .cell-brief { grid-column: span 7; }
     .cell-sentiment { grid-column: span 5; }
+    .cell-third { grid-column: span 4; }
+
+    .feed.compact .feed-line {
+      grid-template-columns: 1fr;
+      gap: 3px;
+      padding: 9px 0;
+    }
+
+    .feed.compact .feed-time { padding-top: 0; }
+
+    .sweep-strip {
+      display: grid;
+      grid-template-columns: auto auto auto 1fr;
+      gap: 18px 40px;
+      align-items: center;
+    }
+
+    .sweep-strip .scan-verdict { margin: 0; }
     .cell-allocation { grid-column: span 5; }
     .cell-income { grid-column: span 7; }
     .cell-wide { grid-column: span 12; }
@@ -621,29 +639,6 @@
     .gate-line .rej { color: var(--status-serious); }
 
     /* sentiment */
-    .scan-rows { display: grid; gap: 10px; }
-
-    .scan-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--panel-2);
-      font-size: 0.84rem;
-      color: var(--soft-ink);
-    }
-
-    .scan-row .n {
-      font-family: var(--mono);
-      font-variant-numeric: tabular-nums;
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 0.78rem;
-    }
-
     .scan-verdict { margin: 12px 0 0; font-size: 0.84rem; color: var(--soft-ink); }
 
     /* donut */
@@ -1089,7 +1084,9 @@
       .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 0 48px; }
       .pillars { grid-template-columns: repeat(2, 1fr); }
       .day-rail { grid-template-columns: repeat(2, 1fr); }
-      .cell-brief, .cell-sentiment, .cell-allocation, .cell-income { grid-column: span 12; }
+      .cell-brief, .cell-sentiment, .cell-allocation, .cell-income, .cell-third { grid-column: span 12; }
+      .sweep-strip { grid-template-columns: repeat(3, auto); }
+      .sweep-strip .scan-verdict { grid-column: 1 / -1; }
       .decision-grid { grid-template-columns: 1fr; }
       .decision-col + .decision-col { border-left: 0; border-top: 1px solid var(--line); }
       .incident { grid-template-columns: 1fr; gap: 32px; }
@@ -1129,7 +1126,7 @@
         <p class="hero-copy">A private portfolio operating system, built around a wealth manager&rsquo;s holdings, income objectives, and risk rules. It observes continuously, explains what moved, models decisions before they happen&nbsp;&mdash; and preserves discipline when markets get disorderly.</p>
         <div class="btn-row">
           <a class="button primary" href="#pillars">Explore the system</a>
-          <a class="button secondary" href="#day">View a sample briefing</a>
+          <a class="button secondary" href="#briefings">Read the briefings</a>
         </div>
       </div>
 
@@ -1306,50 +1303,114 @@
         </article>
       </div>
 
+    </section>
+
+    <!-- ============ THE BRIEFINGS ============ -->
+    <section class="page-section shell" id="briefings">
+      <p class="section-kicker">The intelligence desk</p>
+      <h2>Three editions a day. Each with a different job.</h2>
+      <p class="section-copy">Before each edition, an agent sweep reads the wires, filings, and the social tape&nbsp;&mdash; 06:35, 11:30, 14:20. An evidence gate rejects every claim that arrives without a source, a deterministic assembler writes the report, and a post-run audit re-reads what actually posted. The client reads <strong>three short messages a day</strong>, where they already read everything else&nbsp;&mdash; and can pull a session-aware pulse anytime in between.</p>
+
       <div class="desk-grid">
-        <div class="panel cell-brief">
+        <div class="panel cell-third">
           <div class="panel-head">
-            <h3 class="panel-title">Sample &middot; pre-market briefing &middot; 07:00 MT</h3>
-            <span class="tag illustrative">Illustrative</span>
+            <h3 class="panel-title">Premarket &middot; 07:00 MT</h3>
+            <span class="tag illustrative">sweep 06:35</span>
           </div>
           <div class="panel-body">
-            <div class="feed">
+            <div class="feed compact">
               <div class="feed-line">
                 <span class="feed-time">OVERNIGHT</span>
                 <span class="feed-text">Semis soft premarket on export-license headlines; sector ETF <b>&minus;2.1%</b>.<span class="src">source: reuters.com</span></span>
-              </div>
-              <div class="feed-line">
-                <span class="feed-time">RATES</span>
-                <span class="feed-text">10Y at <b>4.31%</b> (&minus;4bp); no change to the income-sleeve outlook.<span class="src">source: cnbc.com</span></span>
               </div>
               <div class="feed-line">
                 <span class="feed-time">PORTFOLIO</span>
                 <span class="feed-text">LTV opens <b>64.2%</b> &middot; MODE YELLOW. Excess liquidity <b>$<span class="blur-usd" aria-hidden="true">1,983,000</span></b>. No mode line crossed overnight.</span>
               </div>
               <div class="feed-line">
-                <span class="feed-time">INCOME</span>
-                <span class="feed-text">Two pay dates this week; estimated deposits on track vs plan.</span>
+                <span class="feed-time">CALENDAR</span>
+                <span class="feed-text">Fed minutes 12:00 MT &middot; two pay dates this week&nbsp;&mdash; every catalyst on the card source-verified.</span>
               </div>
             </div>
             <div class="gate-line">
-              <span>evidence gate: <span class="ok">5 claims admitted</span> &middot; <span class="rej">1 rejected (no source)</span></span>
-              <span>post-run audit: format <span class="ok">&#10003;</span> tickers&harr;amounts <span class="ok">&#10003;</span> catalyst evidence <span class="ok">&#10003;</span></span>
+              <span>gate: <span class="ok">5 admitted</span> &middot; <span class="rej">1 rejected (no source)</span></span>
             </div>
           </div>
         </div>
 
-        <div class="panel cell-sentiment">
+        <div class="panel cell-third">
           <div class="panel-head">
-            <h3 class="panel-title">Sentiment sweep &middot; 11:30 MT</h3>
-            <span class="tag illustrative">Illustrative</span>
+            <h3 class="panel-title">Midday &middot; 12:00 MT</h3>
+            <span class="tag illustrative">sweep 11:30</span>
           </div>
           <div class="panel-body">
-            <div class="scan-rows">
-              <div class="scan-row"><span>Posts &amp; articles scanned</span><span class="n">41</span></div>
-              <div class="scan-row"><span>Catalysts admitted (sourced)</span><span class="n">2</span></div>
-              <div class="scan-row"><span>Rumors rejected at the gate</span><span class="n">3</span></div>
+            <div class="feed compact">
+              <div class="feed-line">
+                <span class="feed-time">TAPE</span>
+                <span class="feed-text">Portfolio <b>&minus;0.8%</b> vs sector <b>&minus;1.6%</b>&nbsp;&mdash; the covered-call sleeve dampening exactly as designed.</span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">DRIVERS</span>
+                <span class="feed-text">Two movers tied to verified catalysts.<span class="src">source: bloomberg.com</span> Third mover: <b>no catalyst admitted</b>&nbsp;&mdash; flagged as unexplained, not narrated.</span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">POSTURE</span>
+                <span class="feed-text">LTV <b>64.6%</b> &middot; MODE YELLOW holds &middot; buys stay gated by the solver ceiling.</span>
+              </div>
             </div>
-            <p class="scan-verdict">&ldquo;No catalyst&rdquo; is a claim too&nbsp;&mdash; the audit demands evidence in <em>both</em> directions, so silence is never just a shrug.</p>
+            <div class="gate-line">
+              <span>gate: <span class="ok">4 admitted</span> &middot; <span class="rej">2 rejected (rumor, no source)</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel cell-third">
+          <div class="panel-head">
+            <h3 class="panel-title">Close &middot; 15:00 MT</h3>
+            <span class="tag illustrative">sweep 14:20</span>
+          </div>
+          <div class="panel-body">
+            <div class="feed compact">
+              <div class="feed-line">
+                <span class="feed-time">WRAP</span>
+                <span class="feed-text">Day closes <b>&minus;0.4%</b> vs broad market <b>+0.3%</b>&nbsp;&mdash; rotation absorbed, mode line never crossed.</span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">INCOME</span>
+                <span class="feed-text">Two ex-dates tomorrow; Jul&nbsp;31 deposit tracking its estimate.</span>
+              </div>
+              <div class="feed-line">
+                <span class="feed-time">WATCH</span>
+                <span class="feed-text">Fed decision Thu &middot; AI-capex earnings next week &middot; one distribution confirmation pending.</span>
+              </div>
+            </div>
+            <div class="gate-line">
+              <span>audit: format <span class="ok">&#10003;</span> tickers&harr;amounts <span class="ok">&#10003;</span> evidence <span class="ok">&#10003;</span> &middot; delivery verified 15:00:04</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel cell-wide">
+          <div class="panel-head">
+            <h3 class="panel-title">Sentiment &amp; catalyst sweep &middot; before every edition</h3>
+            <span class="tag illustrative">web &middot; X &middot; news</span>
+          </div>
+          <div class="panel-body">
+            <div class="sweep-strip">
+              <div class="mini-stat">
+                <span class="label">Posts &amp; articles scanned</span>
+                <p class="value">41</p>
+              </div>
+              <div class="mini-stat">
+                <span class="label">Catalysts admitted (sourced)</span>
+                <p class="value">2</p>
+              </div>
+              <div class="mini-stat">
+                <span class="label">Rumors rejected at the gate</span>
+                <p class="value">3</p>
+              </div>
+              <p class="scan-verdict">&ldquo;No catalyst&rdquo; is a claim too&nbsp;&mdash; the audit demands evidence in <em>both</em> directions, so silence is never just a shrug.</p>
+            </div>
           </div>
         </div>
       </div>
