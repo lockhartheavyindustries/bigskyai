@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Enrolled project coordination manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "protocol",
+    "project",
+    "hub",
+    "repository",
+    "default_branch",
+    "briefing",
+    "instructions",
+    "work",
+    "verification",
+    "roles"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "agent-coordination/v1" },
+    "project_role": { "enum": ["project", "control-plane"] },
+    "coordination_kit": {
+      "type": "object",
+      "required": ["version", "channel"],
+      "properties": {
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "channel": { "enum": ["stable", "preview"] }
+      },
+      "additionalProperties": false
+    },
+    "project": { "type": "string", "minLength": 1 },
+    "hub": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+    "repository": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+    "default_branch": { "type": "string", "minLength": 1 },
+    "briefing": { "type": "string", "minLength": 1 },
+    "instructions": { "type": "string", "minLength": 1 },
+    "work": {
+      "type": "object",
+      "properties": {
+        "issue_required": { "type": "boolean" },
+        "branch_required": { "type": "boolean" },
+        "pull_request_required": { "type": "boolean" },
+        "single_project_issues": {
+          "type": "string",
+          "pattern": "^https://github\\.com/[^/\\s]+/[^/\\s]+/issues/?$"
+        },
+        "cross_project_issues": {
+          "type": "string",
+          "pattern": "^https://github\\.com/[^/\\s]+/[^/\\s]+/issues/?$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": true
+    },
+    "roles": { "type": "object" }
+  },
+  "additionalProperties": true
+}
