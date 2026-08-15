@@ -1,0 +1,43 @@
+name: Agent task
+description: Claim bounded repository work through the shared coordination lifecycle.
+title: ""
+labels:
+  - coordination
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective and boundaries
+    validations:
+      required: true
+  - type: input
+    id: lead
+    attributes:
+      label: Lead and active platform
+    validations:
+      required: true
+  - type: input
+    id: branch
+    attributes:
+      label: Branch or proposed branch
+    validations:
+      required: true
+  - type: textarea
+    id: areas
+    attributes:
+      label: Affected areas, dependencies, and blockers
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance and validation evidence
+    validations:
+      required: true
+  - type: textarea
+    id: external
+    attributes:
+      label: External authority and Needs owner
+      description: Separate automatic PR consequences from manual external actions.
+    validations:
+      required: true

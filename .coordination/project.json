@@ -1,0 +1,33 @@
+{
+  "$schema": "project-manifest.schema.json",
+  "schema_version": 1,
+  "protocol": "agent-coordination/v1",
+  "project_role": "project",
+  "coordination_kit": {
+    "version": "0.2.0",
+    "channel": "stable"
+  },
+  "project": "bigskyai",
+  "hub": "lockhartheavyindustries/agent-coordination",
+  "repository": "lockhartheavyindustries/bigskyai",
+  "default_branch": "main",
+  "briefing": "README.md",
+  "instructions": "AGENTS.md",
+  "work": {
+    "issue_required": true,
+    "branch_required": true,
+    "pull_request_required": true,
+    "single_project_issues": "https://github.com/lockhartheavyindustries/bigskyai/issues",
+    "cross_project_issues": "https://github.com/lockhartheavyindustries/agent-coordination/issues"
+  },
+  "verification": {
+    "commands": [
+      "just check"
+    ]
+  },
+  "roles": {
+    "owner": "Brian Lockhart",
+    "preferred_builder": null,
+    "reviewers": []
+  }
+}
