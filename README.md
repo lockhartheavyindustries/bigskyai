@@ -3,19 +3,16 @@
 This repository is the public GitHub Pages home for Big Sky AI experiments and
 publications.
 
-## Ralph and The Weekly Ralph
+## Ralph
 
-Ralph is a top-level Big Sky AI project at `ralph/`. Its landing page and The
-Weekly Ralph issue archive are generated from the public issue source in
-`content/weekly-ralph/`. That source must already be anonymized and approved
-before it enters this public repository. Raw chats, private QMD excerpts, phone
-numbers, real names, and unapproved media belong in the private OpenClaw
-workspace—not here.
+Ralph is a top-level Big Sky AI project at `ralph/`. Its landing page and
+subpages are generated from `templates/` and `content/ralph-whats-new.toml`.
+Raw chats, private QMD excerpts, phone numbers, and real names belong in the
+private OpenClaw workspace—not here.
 
-Create a new issue by copying the previous TOML file, incrementing `issue` and
-`slug`, setting `published` to the date the issue is generated (preferably a
-Monday), and replacing the editorial content. The public date is formatted
-automatically from `published`. Then run:
+The former Weekly Ralph publication is no longer part of the public site.
+
+After changing Ralph page content, run:
 
 ```sh
 just check
@@ -23,7 +20,7 @@ just check
 
 The build writes:
 
-- `ralph/index.html` — Ralph project landing page and newsletter index
+- `ralph/index.html` — Ralph project landing page
 - `ralph/how-it-works/index.html` — plain-English technology tour (from
   `templates/ralph-how-it-works.html`; subpages are declared in
   `RALPH_SUBPAGES` in `scripts/build_weekly_ralph.py`)
@@ -31,9 +28,6 @@ The build writes:
   `content/ralph-whats-new.toml` (add an `[[entries]]` block with `date`,
   `title`, and Markdown `body`, then run `just check`; the landing page's
   "New" teaser shows the most recent entry automatically)
-- `weekly-ralph/index.html` — issue archive
-- `weekly-ralph/issues/<slug>/index.html` — permanent issue page
-- `weekly-ralph/feed.xml` — RSS feed
 - `sitemap.xml` and `robots.txt` — regenerated from `SITE_URL` on every
   build so they can never go stale or point at the wrong domain
 
@@ -53,19 +47,11 @@ images under `ralph/assets/images/` and record their metadata in
 ## Analytics
 
 Public HTML pages include the GoatCounter beacon for
-`bigskyai.goatcounter.com`. Generated Ralph and Weekly Ralph pages inherit it
-from their templates, and `just check` verifies that every public page contains
-exactly one beacon.
-
-Use campaign parameters when distributing an issue, for example:
-
-```text
-?utm_campaign=weekly-ralph-001&utm_source=imessage
-```
+`bigskyai.goatcounter.com`. Generated Ralph pages inherit it from their templates, and `just check`
+verifies that every public page contains exactly one beacon.
 
 ## Public URLs that must remain stable
 
-- `/weekly-ralph/`
 - `/ralph/`
 - `/strummer/`
 - `/powbot/`

@@ -5,7 +5,7 @@
 #   "Markdown==3.8.2",
 # ]
 # ///
-"""Build the Ralph landing page and The Weekly Ralph publication."""
+"""Build the Ralph public pages."""
 
 from __future__ import annotations
 
@@ -47,7 +47,6 @@ STATIC_SITE_PATHS = (
     "ralph/",
     "ralph/how-it-works/",
     "ralph/whats-new/",
-    "weekly-ralph/",
     "strummer/",
     "powbot/",
     "firetower/",
@@ -178,7 +177,9 @@ def create_environment() -> Environment:
 
 def build_weekly_ralph(destination: Path, issues: list[dict]) -> None:
     if not issues:
-        raise SystemExit("No Weekly Ralph issue source files found.")
+        if destination.exists():
+            shutil.rmtree(destination)
+        return
 
     environment = create_environment()
 
@@ -210,8 +211,6 @@ def build_ralph(
     issues: list[dict],
     whats_new: list[dict],
 ) -> None:
-    if not issues:
-        raise SystemExit("No Weekly Ralph issue source files found.")
 
     environment = create_environment()
     destination.mkdir(parents=True, exist_ok=True)
@@ -285,10 +284,19 @@ def main() -> None:
             expected_ralph = expected_root / "ralph"
             build_weekly_ralph(expected_weekly_ralph, issues)
             build_ralph(expected_ralph, issues, whats_new)
-            differences = compare_directories(
-                expected_weekly_ralph,
-                OUTPUT_DIR,
-            )
+            differences = []
+            if expected_weekly_ralph.exists() or OUTPUT_DIR.exists():
+                if expected_weekly_ralph.exists() and OUTPUT_DIR.exists():
+                    differences.extend(
+                        compare_directories(
+                            expected_weekly_ralph,
+                            OUTPUT_DIR,
+                        )
+                    )
+                elif expected_weekly_ralph.exists() != OUTPUT_DIR.exists():
+                    differences.append(
+                        "weekly-ralph output presence does not match the build"
+                    )
             differences.extend(
                 compare_directories(expected_ralph, RALPH_OUTPUT_DIR)
             )
@@ -306,15 +314,8 @@ def main() -> None:
         print("Ralph and Weekly Ralph generated output is current.")
         return
 
-    preserved_assets = OUTPUT_DIR / "assets"
-    with tempfile.TemporaryDirectory(prefix="weekly-ralph-assets-") as temporary:
-        backup = Path(temporary) / "assets"
-        if preserved_assets.exists():
-            shutil.copytree(preserved_assets, backup)
-        if OUTPUT_DIR.exists():
-            shutil.rmtree(OUTPUT_DIR)
-        if backup.exists():
-            shutil.copytree(backup, preserved_assets)
+    if OUTPUT_DIR.exists():
+        shutil.rmtree(OUTPUT_DIR)
     build_weekly_ralph(OUTPUT_DIR, issues)
     build_ralph(RALPH_OUTPUT_DIR, issues, whats_new)
     (ROOT / "sitemap.xml").write_text(build_sitemap(issues), encoding="utf-8")

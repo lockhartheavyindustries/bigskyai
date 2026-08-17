@@ -9,7 +9,7 @@ from urllib.parse import unquote, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC_DIRS = (ROOT / "ralph", ROOT / "weekly-ralph")
+PUBLIC_DIRS = (ROOT / "ralph",)
 STATIC_PAGES = (
     ROOT / "index.html",
     ROOT / "strummer" / "index.html",
@@ -67,6 +67,7 @@ def main() -> None:
     html_files = sorted(
         path
         for public_dir in PUBLIC_DIRS
+        if public_dir.exists()
         for path in public_dir.rglob("*.html")
     )
     if not html_files:
