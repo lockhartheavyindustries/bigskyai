@@ -109,35 +109,6 @@
         <a class="tour-link" href="how-it-works/">Curious how it all fits together? Take the full tour &rarr;</a>
       </div>
     </section>
-
-    <section class="newsletter">
-      <div class="newsletter-heading">
-        <div>
-          <p class="section-label">Stories from the community</p>
-          <h2>The Weekly Ralph</h2>
-        </div>
-        <div class="newsletter-aside">
-          <img class="newsletter-mark" src="assets/images/ralph-excited-green-closeup.png" alt="Close-up of an excited Ralph Wiggum against a green background" width="400" height="400" loading="lazy">
-          <p>A collection of real-world ways people put Ralph to work.</p>
-        </div>
-      </div>
-
-      <div class="issue-list">
-        {% for issue in issues %}
-        <a class="issue" href="../weekly-ralph/issues/{{ issue.slug }}/">
-          <div class="issue-meta">
-            <span>Issue {{ "%03d"|format(issue.issue) }}</span>
-            <time datetime="{{ issue.published }}">{{ issue.display_date }}</time>
-          </div>
-          <h3>{{ issue.title }}</h3>
-          <p>{{ issue.dek }}</p>
-          <span class="read-link">Read the issue &rarr;</span>
-        </a>
-        {% endfor %}
-      </div>
-
-      <a class="archive-link" href="../weekly-ralph/">View the publication archive and RSS feed &rarr;</a>
-    </section>
   </main>
 
   <footer>
@@ -146,7 +117,6 @@
       <a href="./">Meet Ralph</a>
       <a href="how-it-works/">How Ralph works</a>
       <a href="whats-new/">What's new</a>
-      <a href="../weekly-ralph/">The Weekly Ralph</a>
       <a href="../about/">About</a>
       <a href="mailto:info@bigskyai.ai">Contact</a>
     </nav>

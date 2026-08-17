@@ -17,7 +17,6 @@ Founder: Brian Lockhart (three decades of production systems: Xbox Live, Forza a
 
 ## Publications
 
-- [The Weekly Ralph](https://bigskyai.ai/weekly-ralph/): real, anonymized stories of people putting a private AI assistant to work. RSS: https://bigskyai.ai/weekly-ralph/feed.xml
 - [What's new with Ralph](https://bigskyai.ai/ralph/whats-new/): running changelog.
 
 ## Company
