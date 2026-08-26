@@ -4,6 +4,37 @@
 # Public page — no member names, no private details.
 
 [[entries]]
+date = "2026-08-25"
+title = "Ralph can search for you later"
+body = """
+Ralph can now schedule a web search or search his saved memory at a time you
+choose. The search can happen once or repeat on a regular schedule, and the
+result comes back through your usual Slack or iMessage conversation.
+
+Try things like:
+
+- *Ralph, tomorrow morning at 8, search the web for road closures near Bozeman
+  and summarize anything important.*
+- *Ralph, every weekday at 9 AM, search for updates about [topic] and send me a
+  short roundup.*
+- *Ralph, every day at 7 AM, check for new information about [topic], but only
+  message me when something new appears.*
+- *Ralph, next Monday, search your memory for what we have discussed about
+  [topic] and summarize the important parts.*
+
+You can also ask Ralph to show, change, or cancel your scheduled searches.
+For an ongoing watch, Ralph can stay silent after a successful check that finds
+nothing new, but only when you explicitly ask him to do that.
+
+This release is intentionally narrow. Scheduled searches are limited to
+lightweight web searches and searches of Ralph's saved memory. They can run no
+more frequently than once per hour, and each person can have up to five active
+scheduled searches. Ralph still cannot schedule arbitrary future actions,
+edit files, send messages to other people, make purchases, or run open-ended
+agent work on a timer.
+"""
+
+[[entries]]
 date = "2026-08-04"
 title = "Ralph can remind you later"
 body = """
