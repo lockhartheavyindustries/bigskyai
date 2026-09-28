@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Big Sky AI</title>
+  <defs>
+    <clipPath id="tile">
+      <rect width="512" height="512" rx="100"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="512" height="512" fill="#063f3d"/>
+    <circle cx="392" cy="153" r="71" fill="#d7ad57"/>
+    <polygon points="248,512 356,265 512,512" fill="#d96f49"/>
+    <polygon points="0,512 186,174 400,512" fill="#fffaf0"/>
+  </g>
+</svg>
