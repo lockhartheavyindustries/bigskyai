@@ -1,6 +1,8 @@
 # Big Sky AI
 
-> Practical AI consulting from Bozeman, Montana. Big Sky AI builds and cares for AI systems for small businesses and families — workflow audits, fixed-scope builds, and ongoing care — with every project documented in public. Tagline: "AI that shows its work."
+> Practical AI consulting from Bozeman, Montana. Big Sky AI builds and cares for AI systems for small businesses and families — workflow audits, fixed-scope builds, and ongoing care — with every project documented in public. Tagline: "Big sky thinking. Down-to-earth work."
+
+Motto: "Useful AI for small businesses and families, built in Bozeman and kept running every day."
 
 Founder: Brian Lockhart (three decades of production systems: Xbox Live, Forza at Turn 10, Tableau product security through the IPO, Core Scientific from bankruptcy to NASDAQ relisting). Contact: info@bigskyai.ai
 

@@ -8,7 +8,7 @@ It owns exactly one thing: Big Sky AI's root vision - who the company serves, wh
 
 ## Receipts before claims
 
-"AI that shows its work" is a habit, not a slogan: every public claim traces to something that runs, ran, or is plainly labeled as not yet running.
+Showing the work is a habit: every public claim traces to something that runs, ran, or is plainly labeled as not yet running.
 Each showcase carries its true status - installation or demonstration - and never reads as more finished, more used, or more available than it is.
 A showcase is evidence for an offer, not the product itself, and the front page shows only work that runs for real people and the offers built on it.
 Illustrative figures are labeled illustrative, and a client's dollar amounts are never shown.
