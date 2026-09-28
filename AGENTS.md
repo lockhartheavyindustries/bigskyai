@@ -1,3 +1,5 @@
+`VISION.md` is the acceptance policy: test every proposed change against it.
+
 ## GitHub agent coordination
 
 Before mutable work, read `.coordination/project.json`,
