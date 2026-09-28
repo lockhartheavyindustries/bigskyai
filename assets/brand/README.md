@@ -3,7 +3,7 @@
 | File | Size | Use |
 | --- | --- | --- |
 | `bigsky-mark.svg` | Vector (512 × 512 viewBox) | Master Big Sky AI mark: teal rounded square, cream and coral peaks, gold sun. Redrawn to match `../bigsky-favicon-192.png`. |
-| `bigsky-x-profile.png` | 800 × 800 | X profile picture. Full-bleed teal, with the peaks and sun kept inside the circle X crops to. |
+| `bigsky-x-profile.png` | 800 × 800 | X profile picture. Full-bleed teal, composed like the site mark: the peaks bleed off the bottom edge and are trimmed by the circle X crops to, while the sun stays fully inside it. |
 | `bigsky-x-header.png` | 1500 × 500 | X header banner. Share-card style, with all text kept clear of the profile picture at the bottom left and of mobile edge crops. |
 
 Each PNG is rendered from the SVG of the same name in this folder:
