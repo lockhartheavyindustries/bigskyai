@@ -34,9 +34,9 @@ The build writes:
 Production is served by Vercel (project `bigskyai`, team Big Sky AI) at
 https://bigskyai.ai from the root of `main` — no build step; generated output
 is committed. Use a branch and draft pull request for editorial review.
-Merging the approved change publishes it. GitHub Pages remains enabled as a
-legacy mirror so old lockhartheavyindustries.github.io links keep working;
-canonical URLs point at bigskyai.ai.
+Merging the approved change publishes it. The GitHub Pages legacy mirror
+(lockhartheavyindustries.github.io) is being retired; all canonical and asset
+URLs point at bigskyai.ai.
 
 ## Ralph assets
 
